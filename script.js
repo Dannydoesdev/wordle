@@ -5,11 +5,18 @@
 
 // console.log(words.length)
 
+
+
 let inputArr = []
 
 const input = document.getElementById('input')
 
-const submitButton = document.getElementById('submit')
+const submitButton = document.getElementById('submit');
+
+submitButton.addEventListener('click', submitGuess);
+
+
+
 
 let userInput = input.value
 
@@ -55,6 +62,7 @@ function checkInput(e) {
 
     // // updateDivs(currentLetter);
     updateDivs(inputArr);
+    return inputArr;
 }
 
 
@@ -64,7 +72,7 @@ function updateDivs(letter) {
     let letterRow = document.querySelectorAll('#first-row .oneletter')
     let currentLoop = 0
     // letterRow[0].innerText = '1'
-    console.log('test' + letterRow[0])
+    // console.log('test' + letterRow[0])
     // letterRow[0].innerText = letter;
 
     for (oneLetter of letterRow) {
@@ -88,6 +96,8 @@ function updateDivs(letter) {
     //     currentLoop++
     // }
 }
+
+
 
 // updateDivs('a');
 
@@ -118,6 +128,69 @@ let letterDivs = document.querySelectorAll('.letters');
 let randomNumReturn = randomNumList(words.length)
 let randomWord = words[randomNumReturn]
 
+function todaysWordle() {
+    
+    let wordleArr = randomWord.split('')
+    console.log(wordleArr)
+    return wordleArr
+}
+
+let todaysWordleArr = todaysWordle()
+
+function submitGuess() {
+    // wordleArr - array of individual wordle letters
+    //inputArr - array of individual input letters
+    console.log(inputArr)
+    console.log(inputArr.length)
+    // if (!(inputArr.length = 5)) {
+    //     alert('you need to type 5 letters')
+    // }
+
+    for (let thisInput in inputArr) {
+        // console.log('test' + todaysWordleArr[wordleLetter])
+        // console.log('test' + inputArr[wordleLetter])
+        if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+            console.log('perfect')
+        } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+            console.log('close')
+        } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+            console.log('no dice')
+        }
+
+    }
+    // for (let wordleLetter in todaysWordleArr) {
+    //     console.log('test' + todaysWordleArr[wordleLetter])
+    //     console.log('test' + inputArr[wordleLetter])
+    //     if (inputArr[wordleLetter] === todaysWordleArr[wordleLetter]) {
+    //         console.log('perfect')
+    //     } else if (inputArr.includes(todaysWordleArr[wordleLetter])) {
+    //         console.log('close')
+    //     } else if (!(inputArr.includes(todaysWordleArr[wordleLetter]))) {
+    //         console.log('no dice')
+    //     }
+        
+   
+    // }
+   
+    // for (let thisInput in inputArr) {
+    //     console.log('test' + inputArr[thisInput])
+    //     if (inputArr[thisInput] === wordleArr[thisInput]) {
+    //         console.log('perfect')
+    //     } else if (inputArr[thisInput])
+        
+   
+    // }
+    // for (letter of )
+    // console.log(input)
+    // console.log(todaysWordleArr)
+    
+
+}
+
+
+
+// console.log(todaysWordleVar)
+
 console.log(randomNumReturn)
 console.log(words[randomNumReturn])
 
@@ -133,14 +206,7 @@ output.appendChild(newH);
 
 //push todays random wordle to an array
 
-function todaysWordle() {
 
-    let wordleArr = randomWord.split('')
-    console.log(wordleArr)
-    return wordleArr
-}
-
-todaysWordle()
 // const input = prompt('Where are your green letters?')
 
 
