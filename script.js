@@ -6,16 +6,19 @@
 // console.log(words.length)
 
 
+let rowCounter = 1
 
 let inputArr = []
 
+const inputObj = new Object();
+
 const input = document.getElementById('input')
 
-const submitButton = document.getElementById('submit');
-
-submitButton.addEventListener('click', submitGuess);
 
 
+let arrName = `newArr${rowCounter}`;
+    
+inputObj[arrName] = [];
 
 
 let userInput = input.value
@@ -31,10 +34,59 @@ input.addEventListener('keyup', checkInput)
 // })
 
 
+// function checkInput(e) {
+//     // userInput.innerText = userInput.toLowerCase()
+//     // console.log(e)
+//     // let currentLetter = e.data
+//     let keypress = e.code
+
+//     //give currentLetter something outside loop
+//     let currentLetter
+
+//     if (keypress.includes('Key')) {
+//         let currentLetter = e.key
+//         currentLetter.toLowerCase()
+//         // console.log('thisletter' + currentLetter)
+//         inputArr.push(currentLetter)
+//     }
+
+//     //if backspace is used remove a letter
+//     else if (keypress.includes('Backspace'))
+//     {
+//         inputArr.pop()
+//         }
+//     // if (currentLetter)
+
+// console.log(inputArr)
+    
+//     // console.log(e.target.value)
+//     // inputArr.push(currentLetter)
+//     // console.log(inputArr)
+
+//     // // updateDivs(currentLetter);
+//     updateDivs(inputArr);
+//     return inputArr;
+// }
+
+
+//lets do this with dynamic arrays
 function checkInput(e) {
+
+    arrName = `newArr${rowCounter}`;
+
+    // let arrName = `newArr${rowCounter}`;
+    
+    // inputObj[arrName] = [];
     // userInput.innerText = userInput.toLowerCase()
     // console.log(e)
     // let currentLetter = e.data
+    
+    // let arrName = `newArr${rowCounter}`
+    console.log('current array name' + arrName)
+    // inputObj[arrName] = [];
+    console.log(inputObj)
+    console.log(rowCounter)
+
     let keypress = e.code
 
     //give currentLetter something outside loop
@@ -44,13 +96,16 @@ function checkInput(e) {
         let currentLetter = e.key
         currentLetter.toLowerCase()
         // console.log('thisletter' + currentLetter)
-        inputArr.push(currentLetter)
+        // inputArr.push(currentLetter)
+        inputObj[arrName].push(currentLetter)
+        console.log(inputObj)
     }
 
     //if backspace is used remove a letter
     else if (keypress.includes('Backspace'))
     {
-        inputArr.pop()
+        inputObj[arrName].pop()
+        // inputArr.pop()
         }
     // if (currentLetter)
 
@@ -61,15 +116,20 @@ function checkInput(e) {
     // console.log(inputArr)
 
     // // updateDivs(currentLetter);
-    updateDivs(inputArr);
-    return inputArr;
+    // updateDivs(inputArr);
+    updateDivs(inputObj[arrName])
+    // const thisReturn = return inputObj[arrName];
 }
 
-
-
+console.log('testing return')
+// console.log(checkInput())
 
 function updateDivs(letter) {
-    let letterRow = document.querySelectorAll('#row1 .oneletter')
+    // let letterRow = document.querySelectorAll('#row1 .oneletter')
+    let currentRow = document.getElementById(`row${rowCounter}`)
+    console.log(currentRow)
+    let letterRow = document.querySelectorAll(`#row${rowCounter} .oneletter`)
+    console.log(letterRow)
     let currentLoop = 0
     // letterRow[0].innerText = '1'
     // console.log('test' + letterRow[0])
@@ -139,7 +199,13 @@ let todaysWordleArr = todaysWordle()
 
 let submittedGuess = []
 
+const submitButton = document.getElementById('submit');
+submitButton.addEventListener('click', submitGuess);
+
+
+
 function submitGuess() {
+    let fixArrName = `newArr${rowCounter}`;
     // wordleArr - array of individual wordle letters
     //inputArr - array of individual input letters
     // console.log(inputArr)
@@ -148,6 +214,14 @@ function submitGuess() {
     //     alert('you need to type 5 letters')
     // }
     // let newP = document.createElement('p')
+    // inputObj[rowCounter] = inputArr
+    // console.log(array)
+    console.log(fixArrName)
+    // arrName = `newArr${rowCounter}`;
+    inputArr = inputObj[fixArrName]
+    console.log(inputArr)
+
+    console.log(inputObj)
     let results = document.getElementById('results')
     for (let thisInput in inputArr) {
         console.log(thisInput)
@@ -187,6 +261,11 @@ function submitGuess() {
         // results.appendChild(newP)
 
     }
+    rowCounter++
+    console.log('row count' + rowCounter)
+    input.value = ''
+    let arrName = `newArr${rowCounter}`;
+    inputObj[arrName] = [];
     // for (let wordleLetter in todaysWordleArr) {
     //     console.log('test' + todaysWordleArr[wordleLetter])
     //     console.log('test' + inputArr[wordleLetter])
