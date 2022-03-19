@@ -69,7 +69,7 @@ function checkInput(e) {
 
 
 function updateDivs(letter) {
-    let letterRow = document.querySelectorAll('#first-row .oneletter')
+    let letterRow = document.querySelectorAll('#row1 .oneletter')
     let currentLoop = 0
     // letterRow[0].innerText = '1'
     // console.log('test' + letterRow[0])
@@ -150,6 +150,8 @@ function submitGuess() {
     // let newP = document.createElement('p')
     let results = document.getElementById('results')
     for (let thisInput in inputArr) {
+        console.log(thisInput)
+        let idVar = `letter${thisInput}`
         // console.log('test' + todaysWordleArr[wordleLetter])
         // console.log('test' + inputArr[wordleLetter])
         if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
@@ -157,11 +159,23 @@ function submitGuess() {
             newP.textContent = `${inputArr[thisInput]} is exactly right`
             results.appendChild(newP)
             console.log('perfect')
+            console.log(`#letter${thisInput}`)
+            console.log(idVar)
+            // let thisDiv = document.querySelector(idVar)
+            let thisDiv = document.getElementById(idVar)
+            thisDiv.classList.add('green')
+            // thisDiv.classList.add('green')
+            console.log(thisDiv)
+            console.log(thisDiv.innerHTML)
+            console.log(thisDiv.classList)
+
         } else if (todaysWordleArr.includes(inputArr[thisInput])) {
             let newP = document.createElement('p')
             console.log('close')
             newP.textContent = `${inputArr[thisInput]} is the right letter in the wrong spot`
             results.appendChild(newP)
+            let thisDiv = document.getElementById(idVar)
+            thisDiv.classList.add('yellow')
             // results.appendChild(newP)
         } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
             let newP = document.createElement('p')
