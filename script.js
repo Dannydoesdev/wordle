@@ -33,7 +33,7 @@ input.addEventListener('keyup', checkInput)
 
 function checkInput(e) {
     // userInput.innerText = userInput.toLowerCase()
-    console.log(e)
+    // console.log(e)
     // let currentLetter = e.data
     let keypress = e.code
 
@@ -43,7 +43,7 @@ function checkInput(e) {
     if (keypress.includes('Key')) {
         let currentLetter = e.key
         currentLetter.toLowerCase()
-        console.log('thisletter' + currentLetter)
+        // console.log('thisletter' + currentLetter)
         inputArr.push(currentLetter)
     }
 
@@ -137,25 +137,40 @@ function todaysWordle() {
 
 let todaysWordleArr = todaysWordle()
 
+let submittedGuess = []
+
 function submitGuess() {
     // wordleArr - array of individual wordle letters
     //inputArr - array of individual input letters
-    console.log(inputArr)
-    console.log(inputArr.length)
+    // console.log(inputArr)
+    // console.log(inputArr.length)
     // if (!(inputArr.length = 5)) {
     //     alert('you need to type 5 letters')
     // }
-
+    // let newP = document.createElement('p')
+    let results = document.getElementById('results')
     for (let thisInput in inputArr) {
         // console.log('test' + todaysWordleArr[wordleLetter])
         // console.log('test' + inputArr[wordleLetter])
         if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+            let newP = document.createElement('p')
+            newP.textContent = `${inputArr[thisInput]} is exactly right`
+            results.appendChild(newP)
             console.log('perfect')
         } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+            let newP = document.createElement('p')
             console.log('close')
+            newP.textContent = `${inputArr[thisInput]} is the right letter in the wrong spot`
+            results.appendChild(newP)
+            // results.appendChild(newP)
         } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+            let newP = document.createElement('p')
+            newP.textContent = `${inputArr[thisInput]} is not in the wordle`
+            results.appendChild(newP)
+            // results.appendChild(newP)
             console.log('no dice')
         }
+        // results.appendChild(newP)
 
     }
     // for (let wordleLetter in todaysWordleArr) {

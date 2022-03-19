@@ -1,3 +1,8 @@
+body {
+    background-color: black;
+    color: white;
+}
+
 .letters {
     display:flex;
     flex-direction: row;
@@ -7,7 +12,7 @@
 }
 
 .oneletter {
-    border: 1px solid black;
+    border: 1px solid white;
     width: 40px;
     height: 40px;
     margin: 10px 40px;
