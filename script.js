@@ -225,7 +225,7 @@ function submitGuess() {
     let results = document.getElementById('results')
     for (let thisInput in inputArr) {
         console.log(thisInput)
-        let idVar = `letter${thisInput}`
+        let idVar = `letter${rowCounter}${thisInput}`
         // console.log('test' + todaysWordleArr[wordleLetter])
         // console.log('test' + inputArr[wordleLetter])
         if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
