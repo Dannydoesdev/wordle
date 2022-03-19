@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <div class="letters">
+    <div class="letters" id="first-row">
 
     <div class="oneletter"></div>
     <div class="oneletter"></div>
@@ -22,7 +22,15 @@
     
     </div>
 
-    <div class="letters"></div>
+    <div class="letters" id="second-row">
+
+        <div class="oneletter"></div>
+        <div class="oneletter"></div>
+        <div class="oneletter"></div>
+        <div class="oneletter"></div>
+        <div class="oneletter"></div>
+
+    </div>
     <div class="letters"></div>
     <div class="letters"></div>
     <div class="letters"></div>
@@ -31,9 +39,10 @@
 
     <h1>Give it a test:</h1>
    
-    <input id='input' type="text" name="input">
+    <input id='input' type="text" name="input" maxlength="5">
+    <input type="submit">
 
     <div id="output"></div>
-
+    <button id="submit">Submit your guess</button>
 </body>
 </html>
