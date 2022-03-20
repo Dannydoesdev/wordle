@@ -210,7 +210,7 @@ function todaysWordle() {
 
 let todaysWordleArr = todaysWordle()
 
-let submittedGuess = []
+// let submittedGuess = []
 
 // const submitButton = document.getElementById('submit');
 // submitButton.addEventListener('click', submitGuess);
@@ -219,8 +219,38 @@ document.body.addEventListener('keyup', checkForSubmit)
 
 function checkForSubmit(e) {
 if (e.code.includes('Enter')) {
-        submitGuess()
+    checkValidWords(inputObj[arrName])    
+    // submitGuess()
     }
+}
+
+
+
+function checkValidWords(submittedArray) {
+    
+    const joinedGuessArray = submittedArray.join('')
+    console.log(joinedGuessArray)
+
+    console.log(validWords[4])
+
+    if (validWords.includes(joinedGuessArray.toUpperCase())) {
+        console.log('real word')
+    } else {
+        alert('Thats not a recognised word - try again')
+        console.log('fake word')
+        return
+    }
+      // todaysWordleArr - array of individual wordle letters
+    //inputArr - array of individual input letters
+  
+    submitGuess()
+
+    // let fixArrName = `newArr${rowCounter}`;
+    // inputArr = inputObj[fixArrName]
+    // console.log(fixArrName)
+    console.log(inputArr)
+    console.log(arrName)
+    console.log(todaysWordleArr)
 }
 
 function submitGuess() {
@@ -249,8 +279,8 @@ function submitGuess() {
 
     //error logging - good enough for now
     if (inputArr.length <= 4) {
-        console.log('not enough letter yo')
-        alert('not enough letters')
+        console.log('not enough letters yo')
+        alert('Not enough letters - 5 letters needed')
         return 
     }
 
@@ -381,9 +411,13 @@ output.appendChild(newH);
 
 
 //to do:
-// more rows
+//Can only type English words
 // Keyboard
-// checking they 'won' etc
 //make displayed letter to upper case
+
+
+//Done
+// more rows
+// checking they 'won' etc
 //just translate to letter on screen without the input field on screen
 //submit on 'enter'
