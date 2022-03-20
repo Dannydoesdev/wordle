@@ -144,7 +144,7 @@ button {
     line-height: 180px;
     text-align: center;
     width: 60%;
-    height: 60%;
+    height: 40%;
     overflow: none;
     background-color: black;
     color:white;
@@ -153,8 +153,7 @@ button {
     z-index: 1;
     top: 150px;
     opacity: 85%;
-    left: 233px;
+    left: 320px;
     right: 99px;
     bottom: 111px;
-    width: 60%;
 }

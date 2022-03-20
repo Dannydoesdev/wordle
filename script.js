@@ -15,6 +15,11 @@
 //track wins - winCounter, but will reset on refresh, need to look into 'states' to store outside of refresh somehow
 
 
+//That thing I keep thinking of and forgetting which I will definitely write when I remember next time gosh dang
+
+//AUTO ENTER AFTER 5 LETTERS ENTERED!! (wordle doesnt do that though)
+//A way to toggle auto-enter on/off?
+
 //Done
 // more rows
 // checking they 'won' etc
@@ -465,6 +470,82 @@ function endGame() {
 // console.log(words[randomNumReturn])
 
 // console.log('test word:' + randomWord)
+
+
+// function checkDupes(array) {
+//     let dupeArr = []
+//     for (let item of array) {
+//         if (!dupeArr.includes(item))
+//             dupeArr.push(item);
+//     }
+//     if (dupeArr.length <= 4) {
+//         console.log('theres a duplicate')        
+//     }
+//     return dupeArr
+// }
+// console.log(checkDupes(todaysWordleArr))
+// console.log(checkDupes(['a','a','b','c','d']))
+
+
+//copying this example for 'flexiple.com'
+
+// function toFindDuplicates(arry) {
+//     const uniqueElements = new Set(arry);
+//     const filteredElements = arry.filter(item => {
+//         if (uniqueElements.has(item)) {
+//             uniqueElements.delete(item);
+//         } else {
+//             return item;
+//         }
+//     });
+
+//     return [...new Set(uniqueElements)]
+// }
+
+// const arry = [1, 2, 1, 3, 4, 3, 5];
+// const duplicateElements = toFindDuplicates(arry);
+// console.log(duplicateElements);
+
+// Output: [1, 3]
+
+// console.log([1, 2, 2, 4, 3, 4].filter((e, i, a) => a.indexOf(e) !== i))
+
+
+//Basically - get the duped letter, and the indexes of the letter in the array
+//Run this over wordle array in beginning and input arrays each submission
+//Use the indexes to do some logic around what gets green, yellow etc
+//runs left to right - so without a green, left most letter in guess counts or wordle counts
+//more thinking needed - bit mind explodey
+
+
+//idea taken from stackOverflow
+function getDupes(array) {
+   return array.filter((e, i, a) => a.indexOf(e) !== i)
+}
+
+//idea taken from MDN examples
+function getDupeIndex(array, element) {
+    const indices = [];
+    // const array = ['a', 'b', 'a', 'c', 'a', 'd'];
+    // const element = 'a';
+    let idx = array.indexOf(element);
+    while (idx != -1) {
+      indices.push(idx);
+      idx = array.indexOf(element, idx + 1);
+    }
+    return indices;
+}
+
+
+let dupeTestArr = [1, 2, 1, 3, 4, 3, 5, 1, 2, 4, 1];
+let dupeTestElement = 1;
+
+console.log(getDupeIndex(dupeTestArr, dupeTestElement))
+
+// console.log(getDupes(todaysWordleArr))
+// console.log(getDupes(['a','a','b','c','d']))
+
+
 
 
 //Append the word to test
