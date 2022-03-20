@@ -245,7 +245,14 @@ function submitGuess() {
     //     // break
     // }
 
-   
+    console.log(inputArr.length)
+
+    //error logging - good enough for now
+    if (inputArr.length <= 4) {
+        console.log('not enough letter yo')
+        alert('not enough letters')
+        return 
+    }
 
     console.log(inputObj)
     let results = document.getElementById('results')
