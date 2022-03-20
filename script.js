@@ -347,10 +347,23 @@ function submitGuess() {
     // console.log(correctClasses.length)
     // console.log(todaysWordleArr.length)
     if (currentLetterRowCorrect.length === todaysWordleArr.length) {
-        alert('Congratulations! You got the wordle!')
+        // alert('Congratulations! You got the wordle!')
         console.log('THATS A WIN BABYYYYY')
+        console.log(currentLetterRowCorrect)
+        let allCorrectRow = document.querySelectorAll(`#row${rowCounter} .oneletter`)
+        for (let oneCorrectLetter of allCorrectRow) {
+            oneCorrectLetter.classList.add('test');
+        }
+        console.log(allCorrectRow)
+        // allCorrectRow.classList.add('test');
+        //set stop game
+        rowCounter = 8
     }
 
+    if (rowCounter == 8) {
+        endGame()
+        return
+    }
 
     rowCounter++
     
@@ -395,6 +408,22 @@ function submitGuess() {
 }
 
 
+function endGame() {
+
+    document.body.removeEventListener('keyup', checkInput);
+    document.body.removeEventListener('keyup', checkForSubmit);
+    console.log('youve entered the end game');
+    const finalScreen = document.getElementById('endgame');
+    finalScreen.style.display = 'block';
+
+    const newGameButton = document.getElementById('newgame');
+    newGameButton.addEventListener('click', function () {
+        window.location.reload();
+    })
+       
+
+    
+}
 
 // console.log(todaysWordleVar)
 

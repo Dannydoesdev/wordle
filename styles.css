@@ -31,8 +31,8 @@ body {
     text-align: center;
     font-size: 20pt;
     line-height: 40px;
-    transition-property: all;
-    transition-duration: 0.5s;
+    transition-property: background-color, transform;
+    transition-duration: 0.5s, 1.5s;
     transition-timing-function: ease-in;
 
     animation-duration: 8s;
@@ -60,6 +60,8 @@ body {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px green;
+
+    /* transform: rotate(360deg); */
 }
 
 @keyframes pulse-green {
@@ -80,6 +82,8 @@ body {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px yellow;
+
+    /* transform: rotate(360deg); */
 }
 
 @keyframes pulse-yellow {
@@ -100,6 +104,10 @@ body {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px grey;
+    
+    /* transform-origin: top; */
+    /* transform: rotate(360deg); */
+     /* skew(-5deg); */
 }
 
 @keyframes pulse-grey {
@@ -123,4 +131,30 @@ button {
     border: 2px solid white;
     width: 150px;
     height: 35px;
+}
+
+.test {
+    font-size: 30pt;
+    padding: 30px;
+    transform: rotate(360deg) skew(8deg);
+}
+
+#endgame {
+    display: none;
+    line-height: 180px;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+    overflow: none;
+    background-color: black;
+    color:white;
+
+    position: absolute;
+    z-index: 1;
+    top: 150px;
+    opacity: 85%;
+    left: 233px;
+    right: 99px;
+    bottom: 111px;
+    width: 60%;
 }
