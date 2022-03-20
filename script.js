@@ -12,7 +12,7 @@ let inputArr = []
 
 const inputObj = new Object();
 
-const input = document.getElementById('input')
+// const input = document.getElementById('input')
 
 
 
@@ -21,13 +21,19 @@ let arrName = `newArr${rowCounter}`;
 inputObj[arrName] = [];
 
 
-let userInput = input.value
+// let userInput = input.value
 
 
 
 // input.addEventListener('input', checkInput)
 
-input.addEventListener('keyup', checkInput)
+
+//put event listener on body
+document.body.addEventListener('keyup', checkInput)
+
+// input.addEventListener('keyup', checkInput)
+
+
 
 // input.addEventListener('keyup', function (e) {
 //     console.log(e)
@@ -72,6 +78,7 @@ input.addEventListener('keyup', checkInput)
 //lets do this with dynamic arrays
 function checkInput(e) {
 
+    console.log(e)
     arrName = `newArr${rowCounter}`;
 
     // let arrName = `newArr${rowCounter}`;
@@ -97,16 +104,22 @@ function checkInput(e) {
         currentLetter.toLowerCase()
         // console.log('thisletter' + currentLetter)
         // inputArr.push(currentLetter)
+        if (inputObj[arrName].length <= 4) { 
         inputObj[arrName].push(currentLetter)
         console.log(inputObj)
+        } else if (inputObj[arrName].length == 5) {
+            console.log('too many letters')
+    }
     }
 
     //if backspace is used remove a letter
-    else if (keypress.includes('Backspace'))
-    {
+    else if (keypress.includes('Backspace')) {
         inputObj[arrName].pop()
         // inputArr.pop()
-        }
+    }
+    // else if (keypress.includes('Enter')) {
+    //     submitGuess()
+    // }
     // if (currentLetter)
 
 // console.log(inputArr)
@@ -199,10 +212,16 @@ let todaysWordleArr = todaysWordle()
 
 let submittedGuess = []
 
-const submitButton = document.getElementById('submit');
-submitButton.addEventListener('click', submitGuess);
+// const submitButton = document.getElementById('submit');
+// submitButton.addEventListener('click', submitGuess);
 
+document.body.addEventListener('keyup', checkForSubmit)
 
+function checkForSubmit(e) {
+if (e.code.includes('Enter')) {
+        submitGuess()
+    }
+}
 
 function submitGuess() {
     let fixArrName = `newArr${rowCounter}`;
@@ -327,3 +346,12 @@ output.appendChild(newH);
 //     }
 
 // };
+
+
+//to do:
+// more rows
+// Keyboard
+// checking they 'won' etc
+//make displayed letter to upper case
+//just translate to letter on screen without the input field on screen
+//submit on 'enter'
