@@ -55,15 +55,63 @@ body {
 
 .green {
     background-color: green;
+    animation-duration: 8s;
+    animation-name: pulse-green;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px green;
 }
+
+@keyframes pulse-green {
+    from {
+        box-shadow: 80px 80px 80px green;
+    }
+
+  
+    to {
+        box-shadow: 7px 7px 10px green;
+    }
+  }
 
 .yellow {
     background-color: rgb(159, 159, 25);
+    animation-duration: 8s;
+    animation-name: pulse-yellow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px yellow;
 }
+
+@keyframes pulse-yellow {
+    from {
+        box-shadow: 80px 80px 80px yellow;
+    }
+
+  
+    to {
+        box-shadow: 7px 7px 10px yellow;
+    }
+  }
 
 .grey {
     background-color: grey;
+    animation-duration: 8s;
+    animation-name: pulse-grey;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px grey;
 }
+
+@keyframes pulse-grey {
+    from {
+        box-shadow: 80px 80px 80px grey;
+    }
+
+  
+    to {
+        box-shadow: 7px 7px 10px grey;
+    }
+  }
 
 .hide {
     display: none;
