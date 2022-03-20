@@ -239,6 +239,13 @@ function submitGuess() {
     // arrName = `newArr${rowCounter}`;
     inputArr = inputObj[fixArrName]
     console.log(inputArr)
+    // if (todaysWordleArr == inputArr) {
+    //     alert('YOU WON!!!')
+    //     console.log('WINNERWINNER')
+    //     // break
+    // }
+
+   
 
     console.log(inputObj)
     let results = document.getElementById('results')
@@ -278,11 +285,29 @@ function submitGuess() {
             console.log('no dice')
         }
         // results.appendChild(newP)
-
+        
     }
+    console.log(todaysWordleArr)
+    console.log(inputArr)
+  
+    //CHECK WIN STATUS
+
+    let currentLetterRowCorrect = document.querySelectorAll(`#row${rowCounter} .green`)
+    // console.log(currentLetterRowCorrect)
+    // console.log(currentLetterRowCorrect.length)
+    // let correctClasses = document.querySelectorAll('.green')
+    // console.log(correctClasses)
+    // console.log(correctClasses.length)
+    // console.log(todaysWordleArr.length)
+    if (currentLetterRowCorrect.length === todaysWordleArr.length) {
+        alert('Congratulations! You got the wordle!')
+        console.log('THATS A WIN BABYYYYY')
+    }
+
+
     rowCounter++
     console.log('row count' + rowCounter)
-    input.value = ''
+    // input.value = ''
     let arrName = `newArr${rowCounter}`;
     inputObj[arrName] = [];
     // for (let wordleLetter in todaysWordleArr) {
