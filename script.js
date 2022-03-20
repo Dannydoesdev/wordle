@@ -435,8 +435,10 @@ cheatButton.addEventListener('click', () => {
 
 //to do:
 // Keyboard
-//multiple letters in word logic 
-
+//multiple letters in word logic - should be 'exact matches' > left to right for both double word wordles and guesses
+//extensions (below)
+//add CSS transitions
+//add CSS animations (light up the boxes etc)
 
 
 //Done
@@ -446,3 +448,17 @@ cheatButton.addEventListener('click', () => {
 //submit on 'enter'
 //make displayed letter to upper case
 //Can only type English words
+
+
+
+// EXTENSION IDEAS:
+// Keep track of multiple game rounds with a win counter (can you keep that winning streak??)
+// Allow game customizable options, time limits, guess limits, language options (e.g. American vs. British English)
+// Use a custom set of words - around a theme
+// Make it super easy for players to share their results or scores on social media
+// Focus on the feel and flow of the app - does it move the cursor to the right textbox automatically?
+// Get inventive with your styling - research CSS effects, animations to spiff things up
+// Research LocalStorage or SessionStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity
+// Research web audio API and add sound effects to your game
+// Be creative! Bend the rules and give it a twist!
+
