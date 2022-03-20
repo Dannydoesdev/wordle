@@ -78,7 +78,7 @@ document.body.addEventListener('keyup', checkInput)
 //lets do this with dynamic arrays
 function checkInput(e) {
 
-    console.log(e)
+    // console.log(e)
     arrName = `newArr${rowCounter}`;
 
     // let arrName = `newArr${rowCounter}`;
@@ -89,10 +89,10 @@ function checkInput(e) {
     // let currentLetter = e.data
     
     // let arrName = `newArr${rowCounter}`
-    console.log('current array name' + arrName)
+    // console.log('current array name' + arrName)
     // inputObj[arrName] = [];
-    console.log(inputObj)
-    console.log(rowCounter)
+    // console.log(inputObj)
+    // console.log(rowCounter)
 
     let keypress = e.code
 
@@ -109,7 +109,7 @@ function checkInput(e) {
         // inputArr.push(currentLetter)
         if (inputObj[arrName].length <= 4) { 
         inputObj[arrName].push(currentLetter)
-        console.log(inputObj)
+        // console.log(inputObj)
         } else if (inputObj[arrName].length == 5) {
             console.log('too many letters')
     }
@@ -137,15 +137,15 @@ function checkInput(e) {
     // const thisReturn = return inputObj[arrName];
 }
 
-console.log('testing return')
+// console.log('testing return')
 // console.log(checkInput())
 
 function updateDivs(letter) {
     // let letterRow = document.querySelectorAll('#row1 .oneletter')
     let currentRow = document.getElementById(`row${rowCounter}`)
-    console.log(currentRow)
+    // console.log(currentRow)
     let letterRow = document.querySelectorAll(`#row${rowCounter} .oneletter`)
-    console.log(letterRow)
+    // console.log(letterRow)
     let currentLoop = 0
     // letterRow[0].innerText = '1'
     // console.log('test' + letterRow[0])
@@ -211,7 +211,7 @@ function todaysWordle() {
     let newWordleCapitalise = capitaliseThis(randomWord)
     // let wordleArr = randomWord.split('')
     let wordleArr = newWordleCapitalise.split('')
-    console.log(wordleArr)
+    // console.log(wordleArr)
     return wordleArr
     // return wordleArr
 }
@@ -237,15 +237,15 @@ if (e.code.includes('Enter')) {
 function checkValidWords(submittedArray) {
     
     const joinedGuessArray = submittedArray.join('')
-    console.log(joinedGuessArray)
+    // console.log(joinedGuessArray)
 
-    console.log(validWords[4])
+    // console.log(validWords[4])
 
     if (validWords.includes(joinedGuessArray.toUpperCase())) {
-        console.log('real word')
+        // console.log('real word')
     } else {
         alert('Thats not a recognised word - try again')
-        console.log('fake word')
+        // console.log('fake word')
         return
     }
       // todaysWordleArr - array of individual wordle letters
@@ -256,9 +256,9 @@ function checkValidWords(submittedArray) {
     // let fixArrName = `newArr${rowCounter}`;
     // inputArr = inputObj[fixArrName]
     // console.log(fixArrName)
-    console.log(inputArr)
-    console.log(arrName)
-    console.log(todaysWordleArr)
+    // console.log(inputArr)
+    // console.log(arrName)
+    // console.log(todaysWordleArr)
 }
 
 function submitGuess() {
@@ -273,10 +273,10 @@ function submitGuess() {
     // let newP = document.createElement('p')
     // inputObj[rowCounter] = inputArr
     // console.log(array)
-    console.log(fixArrName)
+    // console.log(fixArrName)
     // arrName = `newArr${rowCounter}`;
     inputArr = inputObj[fixArrName]
-    console.log(inputArr)
+    // console.log(inputArr)
     // if (todaysWordleArr == inputArr) {
     //     alert('YOU WON!!!')
     //     console.log('WINNERWINNER')
@@ -292,42 +292,44 @@ function submitGuess() {
         return 
     }
 
-    console.log(inputObj)
-    let results = document.getElementById('results')
+    // console.log(inputObj)
+    // let results = document.getElementById('results')
     for (let thisInput in inputArr) {
-        console.log(thisInput)
+        // console.log(thisInput)
         let idVar = `letter${rowCounter}${thisInput}`
         // console.log('test' + todaysWordleArr[wordleLetter])
         // console.log('test' + inputArr[wordleLetter])
         if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
-            let newP = document.createElement('p')
-            newP.textContent = `${inputArr[thisInput]} is exactly right`
-            results.appendChild(newP)
-            console.log('perfect')
-            console.log(`#letter${thisInput}`)
-            console.log(idVar)
+            // let newP = document.createElement('p')
+            // newP.textContent = `${inputArr[thisInput]} is exactly right`
+            // results.appendChild(newP)
+            // console.log('perfect')
+            // console.log(`#letter${thisInput}`)
+            // console.log(idVar)
             // let thisDiv = document.querySelector(idVar)
             let thisDiv = document.getElementById(idVar)
             thisDiv.classList.add('green')
             // thisDiv.classList.add('green')
-            console.log(thisDiv)
-            console.log(thisDiv.innerHTML)
-            console.log(thisDiv.classList)
+            // console.log(thisDiv)
+            // console.log(thisDiv.innerHTML)
+            // console.log(thisDiv.classList)
 
         } else if (todaysWordleArr.includes(inputArr[thisInput])) {
-            let newP = document.createElement('p')
-            console.log('close')
-            newP.textContent = `${inputArr[thisInput]} is the right letter in the wrong spot`
-            results.appendChild(newP)
+            // let newP = document.createElement('p')
+            // console.log('close')
+            // newP.textContent = `${inputArr[thisInput]} is the right letter in the wrong spot`
+            // results.appendChild(newP)
             let thisDiv = document.getElementById(idVar)
             thisDiv.classList.add('yellow')
             // results.appendChild(newP)
         } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
-            let newP = document.createElement('p')
-            newP.textContent = `${inputArr[thisInput]} is not in the wordle`
-            results.appendChild(newP)
+            let thisDiv = document.getElementById(idVar)
+            thisDiv.classList.add('grey')
+            // let newP = document.createElement('p')
+            // newP.textContent = `${inputArr[thisInput]} is not in the wordle`
             // results.appendChild(newP)
-            console.log('no dice')
+            // results.appendChild(newP)
+            // console.log('no dice')
         }
         // results.appendChild(newP)
         
@@ -351,6 +353,14 @@ function submitGuess() {
 
 
     rowCounter++
+    
+    //Set lost condition
+
+    if (rowCounter == 7) {
+        alert('Sorry, you lost this one! Refresh to play again')
+    }
+
+
     console.log('row count' + rowCounter)
     // input.value = ''
     let arrName = `newArr${rowCounter}`;
@@ -388,10 +398,10 @@ function submitGuess() {
 
 // console.log(todaysWordleVar)
 
-console.log(randomNumReturn)
-console.log(words[randomNumReturn])
+// console.log(randomNumReturn)
+// console.log(words[randomNumReturn])
 
-console.log('test word:' + randomWord)
+// console.log('test word:' + randomWord)
 
 
 //Append the word to test
@@ -419,9 +429,8 @@ output.appendChild(newH);
 
 
 //to do:
-//Can only type English words
 // Keyboard
-//make displayed letter to upper case
+
 
 
 //Done
@@ -429,3 +438,5 @@ output.appendChild(newH);
 // checking they 'won' etc
 //just translate to letter on screen without the input field on screen
 //submit on 'enter'
+//make displayed letter to upper case
+//Can only type English words

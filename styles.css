@@ -1,6 +1,7 @@
 body {
     background-color: black;
     color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .letters {
@@ -15,15 +16,21 @@ body {
     border: 1px solid white;
     width: 40px;
     height: 40px;
-    margin: 10px 40px;
+    margin: 10px 20px;
+    padding: 10px 10px;
     text-align:center;
-    font-size: 18pt;
+    font-size: 20pt;
+    line-height: 40px;
 }
 
 .green {
-    background-color: green
+    background-color: green;
 }
 
 .yellow {
     background-color: rgb(159, 159, 25);
+}
+
+.grey {
+    background-color: grey;
 }
