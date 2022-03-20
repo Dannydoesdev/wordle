@@ -35,7 +35,7 @@ body {
     transition-duration: 0.5s;
     transition-timing-function: ease-in;
 
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-name: pulse;
     animation-iteration-count: infinite;
     animation-direction: alternate;
