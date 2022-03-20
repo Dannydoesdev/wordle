@@ -34,3 +34,15 @@ body {
 .grey {
     background-color: grey;
 }
+
+.hide {
+    display: none;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    width: 150px;
+    height: 35px;
+}

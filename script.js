@@ -405,11 +405,16 @@ function submitGuess() {
 
 
 //Append the word to test
-
+const cheatButton = document.getElementById('cheat');
 const output = document.getElementById('output');
 let newH = document.createElement('h2');
+newH.classList.add('hide');
 newH.innerHTML= capitaliseThis(randomWord);
 output.appendChild(newH);
+cheatButton.addEventListener('click', () => {
+        newH.classList.toggle('hide');
+    })
+
 
 //push todays random wordle to an array
 
@@ -430,6 +435,7 @@ output.appendChild(newH);
 
 //to do:
 // Keyboard
+//multiple letters in word logic 
 
 
 
