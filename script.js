@@ -100,8 +100,11 @@ function checkInput(e) {
     let currentLetter
 
     if (keypress.includes('Key')) {
-        let currentLetter = e.key
-        currentLetter.toLowerCase()
+        // let currentLetter = e.key
+        let currentLetter = capitaliseThis(e.key)
+        // currentLetter.toLowerCase()
+        // currentLetter
+        console.log('this keypress pushed' + currentLetter)
         // console.log('thisletter' + currentLetter)
         // inputArr.push(currentLetter)
         if (inputObj[arrName].length <= 4) { 
@@ -170,7 +173,10 @@ function updateDivs(letter) {
     // }
 }
 
-
+function capitaliseThis(input) {
+    let caplitalisedInput = input.toUpperCase()
+    return caplitalisedInput
+}
 
 // updateDivs('a');
 
@@ -202,10 +208,12 @@ let randomNumReturn = randomNumList(words.length)
 let randomWord = words[randomNumReturn]
 
 function todaysWordle() {
-    
-    let wordleArr = randomWord.split('')
+    let newWordleCapitalise = capitaliseThis(randomWord)
+    // let wordleArr = randomWord.split('')
+    let wordleArr = newWordleCapitalise.split('')
     console.log(wordleArr)
     return wordleArr
+    // return wordleArr
 }
 
 let todaysWordleArr = todaysWordle()
@@ -390,7 +398,7 @@ console.log('test word:' + randomWord)
 
 const output = document.getElementById('output');
 let newH = document.createElement('h2');
-newH.innerHTML= randomWord;
+newH.innerHTML= capitaliseThis(randomWord);
 output.appendChild(newH);
 
 //push todays random wordle to an array
