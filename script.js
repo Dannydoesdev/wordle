@@ -300,6 +300,8 @@ function checkValidWords(submittedArray) {
     // console.log(todaysWordleArr)
 }
 
+
+
 function submitGuess() {
     let fixArrName = `newArr${rowCounter}`;
     // wordleArr - array of individual wordle letters
@@ -409,8 +411,6 @@ function submitGuess() {
         endGame()
         return
     }
-
-
 
 
     //increase row counter for selector logic to work
@@ -599,6 +599,9 @@ console.log(getDupes(todaysWordleArr))
 
 function wordleDupeFix() {
     
+    // let fixArrName = `newArr${rowCounter}`;
+    // inputArr = inputObj[fixArrName]
+
     // Get the duplicate letters (if any) from todays wordle & return array
     let todaysWordleDupes = getDupes(todaysWordleArr)
 
@@ -624,8 +627,93 @@ function wordleDupeFix() {
     // let thirdPlayerDupe = playerInputDupes[2];
 
 
-    let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
-    let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+    // let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+    // let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+
+//NOTE: IS POSSIBLE FOR 3 OF THE SAME LETTER TO COME UP - NOT ACCOUNTED FOR YET
+    //check if firstPlayer Indices or secondPlayerIndices are 3 in length
+
+    // if (playerInputDupes.length == 0) {
+    //     console.log('no duplicates in player input')
+    // } else if (playerInputDupes.length == 1) {
+    //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+    //     console.log(`1 duplicate letter in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots`)
+    // } else if (playerInputDupes.length == 2) {
+    //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+    //     let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+    //     console.log(`2 duplicate letters in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots as well as ${secondPlayerDupe} located at ${secondPlayerDupeIndices[0]} & ${secondPlayerDupeIndices[1]} spots`)
+    // }
+
+
+
+
+    if (playerInputDupes.length == 0) {
+        console.log('no duplicates in player input')
+    } else if (playerInputDupes.length == 1) {
+        let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+        if (todaysWordleDupes.length == 1) {
+            if (firstPlayerDupe == firstWordleDupe) {
+                for (let index in firstPlayerDupeIndices) {
+                    if (firstPlayerDupeIndices[index] == firstWordleDupeIndices[index]) {
+                        //color that one green
+                        if (firstPlayerDupeIndices[index] == firstPlayerDupeIndices[0]) {
+                            console.log(`color ${firstPlayerDupeIndices[index]} green, color ${firstPlayerDupeIndices[1]}`)
+                        } else if (firstPlayerDupeIndices[index] == firstPlayerDupeIndices[1]) {
+                            console.log(`color ${firstPlayerDupeIndices[index]} green, color ${firstPlayerDupeIndices[0]}`)
+                        }
+                    } else if (firstPlayerDupeIndices[index] != firstWordleDupeIndices[index]) {
+                        console.log(`color ${firstPlayerDupeIndices[0]} yellow, color  ${firstPlayerDupeIndices[1]} grey`)
+                    }
+                }
+            } else if (firstPlayerDupe != firstWordleDupe) {
+                console.log(`dupe in wordle ${firstWordleDupe} and input ${firstPlayerDupe} but different letters`)
+
+         
+            }
+        } else if (todaysWordleDupes.length == 0) {
+            console.log(`dupe in input ${firstPlayerDupe} but not in wordle`)
+                   for (let thisInput in inputArr) {
+                    let idVar = `letter${rowCounter}${thisInput}`
+                    if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+                        let thisDiv = document.getElementById(idVar)
+                        thisDiv.classList.add('green')
+                        return
+                    } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+                        let thisDiv = document.getElementById(idVar)
+                        thisDiv.classList.add('yellow')
+                        return
+                    } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+                        let thisDiv = document.getElementById(idVar)
+                        thisDiv.classList.add('grey')
+                        return
+                    }
+            
+                }
+            }
+                
+        }
+            // else if (dupes arent the same letter)
+        // if (firstPlayerDupe == firstWordleDupe || firstPlayerDupe == secondWordleDupe) {
+        //     for (let index in firstPlayerDupeIndices){
+        //         if (firstPlayerDupeIndices[index] == firstWordleDupeIndices[index]) {
+        //             //color that one green
+        //             console.log(`color ${firstPlayerDupeIndices[index]}`)
+        //         }
+        //     }
+        // console.log(`1 duplicate letter in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots`)
+    // } 
+
+
+
+
+
+
+    // else if (playerInputDupes.length == 2) {
+    //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+    //     let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+    //     console.log(`2 duplicate letters in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots as well as ${secondPlayerDupe} located at ${secondPlayerDupeIndices[0]} & ${secondPlayerDupeIndices[1]} spots`)
+    // }
+
 
     // for (index of )
 
