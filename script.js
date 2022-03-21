@@ -1,7 +1,7 @@
 //Idea time - input for wordle questions
 //randomise the 'wordle' for today (every time it's opened? OR on timer?)
 //check if the inputs match any of the wordle of today
-// 
+
 
 // console.log(words.length)
 
@@ -143,7 +143,7 @@ function checkInput(e) {
         let currentLetter = capitaliseThis(e.key)
         // currentLetter.toLowerCase()
         // currentLetter
-        console.log('this keypress pushed' + currentLetter)
+        // console.log('this keypress pushed' + currentLetter)
         // console.log('thisletter' + currentLetter)
         // inputArr.push(currentLetter)
         if (inputObj[arrName].length <= 4) { 
@@ -322,7 +322,7 @@ function submitGuess() {
     //     // break
     // }
 
-    console.log(inputArr.length)
+    // console.log(inputArr.length)
 
     //error logging - good enough for now
     if (inputArr.length <= 4) {
@@ -330,6 +330,12 @@ function submitGuess() {
         alert('Not enough letters - 5 letters needed')
         return 
     }
+
+
+    //run duplicate letter fn
+
+    wordleDupeFix()
+
 
     // console.log(inputObj)
     // let results = document.getElementById('results')
@@ -373,8 +379,8 @@ function submitGuess() {
         // results.appendChild(newP)
         
     }
-    console.log(todaysWordleArr)
-    console.log(inputArr)
+    // console.log(todaysWordleArr)
+    // console.log(inputArr)
   
     //CHECK WIN STATUS
 
@@ -404,6 +410,10 @@ function submitGuess() {
         return
     }
 
+
+
+
+    //increase row counter for selector logic to work
     rowCounter++
     
     //Set lost condition
@@ -511,6 +521,7 @@ function endGame() {
 // console.log([1, 2, 2, 4, 3, 4].filter((e, i, a) => a.indexOf(e) !== i))
 
 
+
 //Basically - get the duped letter, and the indexes of the letter in the array
 //Run this over wordle array in beginning and input arrays each submission
 //Use the indexes to do some logic around what gets green, yellow etc
@@ -540,12 +551,97 @@ function getDupeIndex(array, element) {
 let dupeTestArr = [1, 2, 1, 3, 4, 3, 5, 1, 2, 4, 1];
 let dupeTestElement = 1;
 
-console.log(getDupeIndex(dupeTestArr, dupeTestElement))
-
-// console.log(getDupes(todaysWordleArr))
-// console.log(getDupes(['a','a','b','c','d']))
+// let todaysWorldeDupes = getDupes(todaysWordleArr)
 
 
+// console.log(getDupeIndex(dupeTestArr, dupeTestElement))
+
+// Get the duplicate letters (if any) from todays wordle
+let todaysWordleDupesTest = getDupes(todaysWordleArr)
+
+//Get the duplicate letters (if any) from player input
+// let playerInputDupes = getDupes(inputArr);
+
+// console.log(inputArr)
+// console.log(playerInputDupes)
+
+//Store the dupes so that they can be passed into the indice fn
+let firstDupe = todaysWordleDupesTest[0]
+let secondDupe = todaysWordleDupesTest[1]
+
+
+//find & store indexes of first duplicate letter in Wordle
+// let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstWordleDupeTest)
+
+//find & store indexes of second duplicate letter in Wordle (RARE)
+// let secondWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, secondWordleDupeTest)
+
+
+if (todaysWordleDupesTest.length == 0) {
+    console.log('no duplicates in todays Wordle')
+} else if (todaysWordleDupesTest.length == 1) {
+    let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstDupe)
+    console.log(`1 duplicate letter: ${firstDupe} located at ${firstWordleDupeIndicesTest[0]} & ${firstWordleDupeIndicesTest[1]} spots`)
+} else if (todaysWordleDupesTest.length == 2) {
+    let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstDupe)
+    let secondWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, secondDupe)
+    console.log(`2 duplicate letters: ${firstDupe} located at ${firstWordleDupeIndicesTest[0]} & ${firstWordleDupeIndicesTest[1]} spots as well as ${secondDupe} located at ${secondWordleDupeIndicesTest[0]} & ${secondWordleDupeIndicesTest[1]} spots`)
+}
+
+// console.log(todaysWordleDupes)
+// console.log(firstDupe)
+
+console.log(getDupeIndex(todaysWordleArr, firstDupe))
+console.log(getDupeIndex(todaysWordleArr, secondDupe))
+console.log(getDupes(todaysWordleArr))
+// console.log(getDupes(['a', 'a', 'a', 'b', 'c', 'd']))
+// console.log(getDupes(dupeTestArr))
+
+function wordleDupeFix() {
+    
+    // Get the duplicate letters (if any) from todays wordle & return array
+    let todaysWordleDupes = getDupes(todaysWordleArr)
+
+    //Store the Wordle dupes so that they can be passed into the indice fn
+    let firstWordleDupe = todaysWordleDupes[0]
+    let secondWordleDupe = todaysWordleDupes[1]
+    // let thirdDupe = todaysWordleDupes[2]
+
+
+    //find & store indexes of first duplicate letter in Wordle
+    let firstWordleDupeIndices = getDupeIndex(todaysWordleArr, firstWordleDupe)
+
+    //find & store indexes of second duplicate letter in Wordle (RARE)
+    let secondWordleDupeIndices = getDupeIndex(todaysWordleArr, secondWordleDupe)
+
+
+    //Get the duplicate letters entered by player - store as array
+    let playerInputDupes = getDupes(inputArr);
+
+        //Store the player input dupes so that they can be passed into the indice fn
+    let firstPlayerDupe = playerInputDupes[0];
+    let secondPlayerDupe = playerInputDupes[1];
+    // let thirdPlayerDupe = playerInputDupes[2];
+
+
+    let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+    let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+
+    // for (index of )
+
+
+    console.log(inputArr)
+
+    //duplicate letters entered (in array form)
+    console.log(playerInputDupes)
+    
+    //Check the indexes of the first duplicate player input letter (most Wordles will only have one)
+    console.log(getDupeIndex(inputArr, firstPlayerDupe))
+
+    //Check the indexes of the second duplicate plater input letter
+    console.log(getDupeIndex(inputArr, secondPlayerDupe))
+
+}
 
 
 //Append the word to test

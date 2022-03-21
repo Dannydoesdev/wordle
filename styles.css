@@ -76,7 +76,7 @@ body {
   }
 
 .yellow {
-    background-color: rgb(159, 159, 25);
+    background-color: rgb(201, 201, 32);
     animation-duration: 8s;
     animation-name: pulse-yellow;
     animation-iteration-count: infinite;
@@ -144,7 +144,7 @@ button {
     line-height: 180px;
     text-align: center;
     width: 60%;
-    height: 40%;
+    height: 50%;
     overflow: none;
     background-color: black;
     color:white;
