@@ -12,6 +12,11 @@
 
 
 //multiple letters - dedupe method? Push anything doubled into new array and store to check later 'dupedLetters' etc
+//IDEA - seperate colourboxes fn from submit gn
+//global duplicate letter counter, run dupe fn only if it is > 1
+//Somehow make dupe colouring work and not colour other duplicate letters
+
+
 //track wins - winCounter, but will reset on refresh, need to look into 'states' to store outside of refresh somehow
 
 
@@ -338,9 +343,13 @@ function submitGuess() {
 
     wordleDupeFix()
 
+    console.log(`dupe Counter = ${wordleDupeCounter}`)
 
-    // console.log(inputObj)
-    // let results = document.getElementById('results')
+
+    //UNCOMMENT FROM HERE
+
+    console.log(inputObj)
+    let results = document.getElementById('results')
     for (let thisInput in inputArr) {
         // console.log(thisInput)
         let idVar = `letter${rowCounter}${thisInput}`
@@ -381,6 +390,11 @@ function submitGuess() {
         // results.appendChild(newP)
         
     }
+
+
+
+
+
     // console.log(todaysWordleArr)
     // console.log(inputArr)
   
@@ -454,6 +468,36 @@ function submitGuess() {
     // console.log(todaysWordleArr)
     
 
+}
+
+
+
+
+let wordleDupeCounter = 0;
+
+
+function colourBoxes() {
+
+    let fixArrName = `newArr${rowCounter}`;
+    inputArr = inputObj[fixArrName]
+
+        for (let thisInput in inputArr) {
+        let idVar = `letter${rowCounter}${thisInput}`
+        console.log(idVar)
+        console.log(inputArr[thisInput])
+    if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+        let thisDiv = document.getElementById(idVar)
+        thisDiv.classList.add('green')
+    } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+        let thisDiv = document.getElementById(idVar)
+        thisDiv.classList.add('yellow')
+    } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+        let thisDiv = document.getElementById(idVar)
+        thisDiv.classList.add('grey')
+
+    }
+
+}
 }
 
 
@@ -650,6 +694,7 @@ function wordleDupeFix() {
     if (playerInputDupes.length == 0) {
         console.log('no duplicates in player input')
     } else if (playerInputDupes.length == 1) {
+        wordleDupeCounter++
         let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
         if (todaysWordleDupes.length == 1) {
             if (firstPlayerDupe == firstWordleDupe) {
@@ -672,23 +717,25 @@ function wordleDupeFix() {
             }
         } else if (todaysWordleDupes.length == 0) {
             console.log(`dupe in input ${firstPlayerDupe} but not in wordle`)
-                   for (let thisInput in inputArr) {
-                    let idVar = `letter${rowCounter}${thisInput}`
-                    if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
-                        let thisDiv = document.getElementById(idVar)
-                        thisDiv.classList.add('green')
-                        return
-                    } else if (todaysWordleArr.includes(inputArr[thisInput])) {
-                        let thisDiv = document.getElementById(idVar)
-                        thisDiv.classList.add('yellow')
-                        return
-                    } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
-                        let thisDiv = document.getElementById(idVar)
-                        thisDiv.classList.add('grey')
-                        return
-                    }
+                //    for (let thisInput in inputArr) {
+                //        let idVar = `letter${rowCounter}${thisInput}`
+                //        console.log(idVar)
+                //        console.log(inputArr[thisInput])
+                //     if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+                //         let thisDiv = document.getElementById(idVar)
+                //         thisDiv.classList.add('green')
+                //         return
+                //     } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+                //         let thisDiv = document.getElementById(idVar)
+                //         thisDiv.classList.add('yellow')
+                //         return
+                //     } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+                //         let thisDiv = document.getElementById(idVar)
+                //         thisDiv.classList.add('grey')
+                //         return
+                //     }
             
-                }
+                // }
             }
                 
         }
