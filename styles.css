@@ -144,8 +144,9 @@ height: 50px;
 #instructions-div {
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 45px;
     justify-content: center;
+    height: 90px;
 
 }
 
@@ -351,3 +352,15 @@ height: 50px;
     color: white;
     display: flex;
   } */
+
+  #green {
+      color: green
+  }
+
+  #yellow {
+      color: yellow
+  }
+
+  #grey {
+      color: grey
+  }
