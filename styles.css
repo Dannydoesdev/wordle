@@ -12,6 +12,91 @@ footer {
     grid-column: span 3;
 }
 
+
+
+
+#unused-letters {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 30px;
+}
+
+#unused-letters > h3 {
+    grid-column: span 5;
+}
+
+#unused-letters > div {
+align-self: center;
+  height: 40px;
+  margin: 0px 3px;
+  line-height: 40px;
+  /* width: 20px; */
+  border: 1px dotted white;
+  background-color: black;
+  color: white;
+  /* display: flex; */
+
+
+  transition-property: background-color, transform, opacity;
+  transition-duration: 0.5s, 1.5s, 1.5s;
+  transition-timing-function: ease-in;
+
+  animation-duration: 8s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  box-shadow: 16px 16px 10px white;
+
+}
+
+#unusedZ {
+    grid-column-start: 3;
+    grid-column-end: 4 ;
+}
+
+
+
+#used-letters {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 30px;
+}
+
+#used-letters > h3 {
+    grid-column: span 5;
+}
+
+#used-letters > div {
+align-self: center;
+  height: 40px;
+  margin: 0px 3px;
+  line-height: 40px;
+  /* width: 20px; */
+  border: 1px dotted white;
+  /* background-color: black; */
+  color: white;
+
+  transition-property: background-color, transform, opacity;
+  transition-duration: 0.5s, 1.5s, 1.5s;
+  transition-timing-function: ease-in;
+
+  /* animation-duration: 8s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  box-shadow: 16px 16px 10px white; */
+
+
+  /* display: flex; */
+}
+
+#usedZ {
+    grid-column-start: 3;
+    grid-column-end: 4 ;
+}
+
+
+
 .letters {
     display:flex;
     flex-direction: row;
@@ -135,6 +220,10 @@ footer {
     opacity: 0;
 }
 
+.full-opacity {
+    opacity: 1;
+}
+
 button {
     background-color: black;
     color: white;
@@ -168,32 +257,9 @@ button {
     bottom: 111px;
 }
 
-#unused-letters {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin-left: 30px;
-}
 
-#unused-letters > h3 {
-    grid-column: span 5;
-}
 
-#unused-letters > div {
-align-self: center;
-  height: 40px;
-  margin: 0px 3px;
-  line-height: 40px;
-  /* width: 20px; */
-  border: 1px dotted white;
-  background-color: black;
-  color: white;
-  /* display: flex; */
-}
 
-#unusedZ {
-    grid-column-start: 3;
-    grid-column-end: 4 ;
-}
 
 /* .unused-letters {
     height: 20px;

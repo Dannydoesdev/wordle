@@ -118,7 +118,7 @@ document.body.addEventListener('keyup', checkInput)
 //     return inputArr;
 // }
 const unusedLettersDiv = document.getElementById('unused-letters')
-const usedLettersDiv = document.getElementById('used-WWletters')
+const usedLettersDiv = document.getElementById('used-letters')
 
 
 //NOTE: Cool alphabet array creator taken from https://javascript.plainenglish.io/create-an-array-of-alphabet-characters-in-javascript-with-this-simple-trick-930033079dd3
@@ -166,6 +166,56 @@ function hideUnusedLetters() {
     // console.log('input letters =')
     // console.log(allUsedLetters)
 }
+
+
+function generateUsedLetters(array) {
+    
+    
+    for (let letter of array) {
+        let newLetterDiv = document.createElement('div')
+        console.log(letter);
+        newLetterDiv.id = `used${letter}`
+        newLetterDiv.classList.add('used-letter-class')
+        newLetterDiv.classList.add('no-opacity')
+        // newLetterDiv.classList.add('unused-letters')
+        newLetterDiv.innerText = letter;
+        usedLettersDiv.appendChild(newLetterDiv);
+   }
+}
+
+generateUsedLetters(alphabet);
+
+
+function showUsedLetters() {
+    let allUsedLetterDivs = document.querySelectorAll('.used-letter-class')
+    let allTypedLetters = document.querySelectorAll('.green, .grey, .yellow')
+   
+    for (let oneUsedLetterDiv of allUsedLetterDivs) {
+        for (let oneTypedLetter of allTypedLetters) {
+            if (oneTypedLetter.innerText == oneUsedLetterDiv.innerText) {
+                oneUsedLetterDiv.classList.add('full-opacity')
+                if (oneTypedLetter.classList.contains('green')) {
+                    oneUsedLetterDiv.classList.add('green')
+                } else if (oneTypedLetter.classList.contains('yellow')) {
+                    oneUsedLetterDiv.classList.add('yellow')
+                }   else if (oneTypedLetter.classList.contains('grey')) {
+                    oneUsedLetterDiv.classList.add('grey')
+                }
+            }
+            }
+        }
+        // if (oneUnusedLetterDiv.innerText == allTypedLetters[0].innerText)
+            // oneUnusedLetterDiv.classList.add('no-opacity')
+        // console.log(oneUsedLetterDiv.innerText)
+        // console.log(allUsedLetters)
+
+    }
+   
+    // console.log(allUnusedLetterDivs)
+    // console.log('input letters =')
+    // console.log(allUsedLetters)
+
+
 
 
 //lets do this with dynamic arrays
@@ -447,6 +497,13 @@ function submitGuess() {
 
     //hide letters type from unused letter section
     hideUnusedLetters()
+
+
+    //Show used letters in the 'used letter section
+    showUsedLetters()
+
+
+
 
     // console.log(todaysWordleArr)
     // console.log(inputArr)
