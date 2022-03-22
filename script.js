@@ -683,12 +683,14 @@ function endGame() {
 //more thinking needed - bit mind explodey
 
 
-//idea taken from stackOverflow
+//NOTE: idea taken from stackOverflow https://stackoverflow.com/a/32122760
+
 function getDupes(array) {
    return array.filter((e, i, a) => a.indexOf(e) !== i)
 }
 
-//idea taken from MDN examples
+
+//NOTE: idea taken from MDN examples https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
 function getDupeIndex(array, element) {
     const indices = [];
     // const array = ['a', 'b', 'a', 'c', 'a', 'd'];
