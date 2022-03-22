@@ -3,10 +3,15 @@
 //check if the inputs match any of the wordle of today
 
 
-// console.log(words.length)
+
+
+//BUGS
+// duplicates only working for 2 letters in input + no doubles letters in wordle
+//if you get same letter green after its yellow first - used letter divs stay yellow
+
 
 //to do:
-// Keyboard (maybe) - thinking floating letters - left side = unused, right side = used
+
 //multiple letters in word logic - should be 'exact matches' > left to right for both double word wordles and guesses
 //extensions (below)
 
@@ -34,6 +39,9 @@
 //Can only type English words
 //add CSS transitions
 //add CSS animations (light up the boxes etc)
+// Keyboard (maybe) - thinking floating letters - left side = unused, right side = used
+
+
 
 
 
@@ -549,7 +557,7 @@ function submitGuess() {
         }
 
         //CURRENTLY BROKEN
-        
+
         // else if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 2 && firstPlayerDupeReturned[0] == inputArr[thisInput] || firstPlayerDupeReturned[1] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) || todaysWordleArr.includes(firstPlayerDupeReturned[1]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
         //     console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
         //     console.log(`added grey to ${firstPlayerDupeReturned[1]}`)
@@ -979,7 +987,8 @@ console.log(playerInputDupes)
                     return playerInputDupes
                 } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
                     let thisDiv = document.getElementById(idVar)
-                    thisDiv.classList.add(`added grey to dupe ${firstPlayerDupe}`)
+                    // thisDiv.classList.add(`added grey to dupe ${firstPlayerDupe}`)
+                    console.log(`added grey to dupe ${firstPlayerDupe}`)
                     return playerInputDupes
                 }
 
