@@ -533,25 +533,31 @@ function submitGuess() {
         let idVar = `letter${rowCounter}${thisInput}`
         let thisDivDupeCheck = document.getElementById(idVar)
 
-        console.log(firstPlayerDupeReturned.length)
-        console.log(firstPlayerDupeReturned)
-        console.log(thisDivDupeCheck)
-        console.log(thisDivDupeCheck.classList)
-        console.log(inputArr[thisInput])
-        console.log(firstPlayerDupeReturned[0])
+        // console.log(firstPlayerDupeReturned.length)
+        // console.log(firstPlayerDupeReturned)
+        // console.log(thisDivDupeCheck)
+        // console.log(thisDivDupeCheck.classList)
+        // console.log(inputArr[thisInput])
+        // console.log(firstPlayerDupeReturned[0])
         
-        if (firstPlayerDupeReturned.length == 1 && firstPlayerDupeReturned[0] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
+        if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 1 && firstPlayerDupeReturned[0] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
             console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
             thisDivDupeCheck.classList.add('grey');
             continue
 
 
-        } else if (firstPlayerDupeReturned.length == 2 && firstPlayerDupeReturned[0] == inputArr[thisInput] || firstPlayerDupeReturned[1] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) || todaysWordleArr.includes(firstPlayerDupeReturned[1]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
-                console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
-                console.log(`added grey to ${firstPlayerDupeReturned[1]}`)
-                thisDivDupeCheck.classList.add('grey');
+        }
+
+        //CURRENTLY BROKEN
+        
+        // else if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 2 && firstPlayerDupeReturned[0] == inputArr[thisInput] || firstPlayerDupeReturned[1] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) || todaysWordleArr.includes(firstPlayerDupeReturned[1]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
+        //     console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
+        //     console.log(`added grey to ${firstPlayerDupeReturned[1]}`)
+        //     thisDivDupeCheck.classList.add('grey');
             
-                continue
+        //     continue
+        // }    
+            
             
                 // results.appendChild(newP)
             
@@ -571,7 +577,7 @@ function submitGuess() {
 
             // console.log('test' + todaysWordleArr[wordleLetter])
             // console.log('test' + inputArr[wordleLetter])
-        } else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+         else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
             // let newP = document.createElement('p')
             // newP.textContent = `${inputArr[thisInput]} is exactly right`
             // results.appendChild(newP)
@@ -985,10 +991,12 @@ console.log(playerInputDupes)
             }
                 
     } else if (playerInputDupes.length == 2) {
+       
         
-        let idVar = `letter${rowCounter}${thisInput}`
+        // CURRENTLY BROKEN
+        // let idVar = `letter${rowCounter}${thisInput}`
 
-        let thisDiv = document.getElementById(idVar)
+        // let thisDiv = document.getElementById(idVar)
       
         // let inputDupeOneDiv = 
 
