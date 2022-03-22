@@ -200,7 +200,7 @@ height: 50px;
 
 .green {
     background-color: green;
-    border: 2px double white;
+    border: 2px solid white;
     animation-duration: 8s;
     animation-name: pulse-green;
     animation-iteration-count: infinite;
