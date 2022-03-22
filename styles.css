@@ -4,6 +4,12 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     /* padding-bottom: 100px; */
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+footer {
+    grid-column: span 3;
 }
 
 .letters {
@@ -125,6 +131,10 @@ body {
     display: none;
 }
 
+.no-opacity {
+    opacity: 0;
+}
+
 button {
     background-color: black;
     color: white;
@@ -157,3 +167,39 @@ button {
     right: 99px;
     bottom: 111px;
 }
+
+#unused-letters {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 30px;
+}
+
+#unused-letters > h3 {
+    grid-column: span 5;
+}
+
+#unused-letters > div {
+align-self: center;
+  height: 40px;
+  margin: 0px 3px;
+  line-height: 40px;
+  /* width: 20px; */
+  border: 1px dotted white;
+  background-color: black;
+  color: white;
+  /* display: flex; */
+}
+
+#unusedZ {
+    grid-column-start: 3;
+    grid-column-end: 4 ;
+}
+
+/* .unused-letters {
+    height: 20px;
+    width: 20px;
+    border: 1px dotted white;
+    background-color: black;
+    color: white;
+    display: flex;
+  } */

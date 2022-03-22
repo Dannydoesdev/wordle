@@ -117,6 +117,55 @@ document.body.addEventListener('keyup', checkInput)
 //     updateDivs(inputArr);
 //     return inputArr;
 // }
+const unusedLettersDiv = document.getElementById('unused-letters')
+const usedLettersDiv = document.getElementById('used-WWletters')
+
+
+//NOTE: Cool alphabet array creator taken from https://javascript.plainenglish.io/create-an-array-of-alphabet-characters-in-javascript-with-this-simple-trick-930033079dd3
+
+
+const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+const alphabet = alpha.map((x) => String.fromCharCode(x));
+console.log(alphabet);
+
+function generateAlpha(array) {
+    
+    
+    for (let letter of array) {
+        let newLetterDiv = document.createElement('div')
+        console.log(letter);
+        newLetterDiv.id = `unused${letter}`
+        newLetterDiv.classList.add('unused-letter-class')
+        // newLetterDiv.classList.add('unused-letters')
+        newLetterDiv.innerText = letter;
+        unusedLettersDiv.appendChild(newLetterDiv);
+   }
+}
+
+generateAlpha(alphabet);
+
+
+function hideUnusedLetters() {
+    let allUnusedLetterDivs = document.querySelectorAll('.unused-letter-class')
+    let allTypedLetters = document.querySelectorAll('.green, .grey, .yellow')
+   
+    for (let oneUnusedLetterDiv of allUnusedLetterDivs) {
+        for (let oneTypedLetter of allTypedLetters) {
+            if (oneTypedLetter.innerText == oneUnusedLetterDiv.innerText) {
+                oneUnusedLetterDiv.classList.add('no-opacity')
+            }
+        }
+        // if (oneUnusedLetterDiv.innerText == allTypedLetters[0].innerText)
+            // oneUnusedLetterDiv.classList.add('no-opacity')
+        console.log(oneUnusedLetterDiv.innerText)
+        // console.log(allUsedLetters)
+
+    }
+   
+    // console.log(allUnusedLetterDivs)
+    // console.log('input letters =')
+    // console.log(allUsedLetters)
+}
 
 
 //lets do this with dynamic arrays
@@ -339,6 +388,9 @@ function submitGuess() {
     }
 
 
+
+
+
     //run duplicate letter fn
 
     wordleDupeFix()
@@ -393,7 +445,8 @@ function submitGuess() {
 
 
 
-
+    //hide letters type from unused letter section
+    hideUnusedLetters()
 
     // console.log(todaysWordleArr)
     // console.log(inputArr)
