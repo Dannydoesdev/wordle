@@ -141,9 +141,13 @@ height: 50px;
     height: 35px;
 }
 
-/* #instructions-div {
+#instructions-div {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    justify-content: center;
 
-} */
+}
 
 
 .letters {

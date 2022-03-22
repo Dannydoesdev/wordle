@@ -419,8 +419,8 @@ const instructionsDiv = document.getElementById('instructions-div')
 instructionsButton.addEventListener('click', showInstructions)
 
 function showInstructions() {
-    // instructionsDiv.classList.toggle('full-opacity')
-    instructionsDiv.classList.toggle('show')
+    instructionsDiv.classList.toggle('full-opacity')
+    // instructionsDiv.classList.toggle('show')
 }
 
 
