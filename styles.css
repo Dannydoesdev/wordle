@@ -12,7 +12,10 @@ footer {
     grid-column: span 3;
 }
 
-
+header {
+    grid-column: span 3;
+    margin-bottom: 25px;
+}
 
 
 #unused-letters {
@@ -27,9 +30,15 @@ footer {
 
 #unused-letters > div {
 align-self: center;
-  height: 40px;
+
+height: 50px;
+width: 55px;
+margin: 0px 3px;
+line-height: 50px;  
+
+  /* height: 40px;
   margin: 0px 3px;
-  line-height: 40px;
+  line-height: 40px; */
   /* width: 20px; */
   /* border: 1px inset white; */
   background-color: black;
@@ -69,9 +78,14 @@ align-self: center;
 
 #used-letters > div {
 align-self: center;
-  height: 40px;
+height: 50px;
+    width: 55px;
+    margin: 0px 3px;
+    line-height: 50px;  
+
+/* height: 40px;
   margin: 0px 3px;
-  line-height: 40px;
+  line-height: 40px; */
   /* width: 20px; */
   /* border: 2px outset white; */
   /* background-color: black; */
@@ -96,6 +110,40 @@ align-self: center;
     grid-column-end: 4 ;
 }
 
+
+#submit-div {
+    grid-column: span 3;
+}
+
+#submit-button {
+
+    background-color: black;
+    color: white;
+    height: 55px;
+    margin-top: 15px;
+    border-style: none;
+    width: 80%;
+    font-weight: 600;
+    font-size: 14pt;
+    animation-duration: 8s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px white;
+
+}
+
+#instructions-button {
+    background-color: black;
+    color: white;
+    /* border: 2px solid white; */
+    width: 150px;
+    height: 35px;
+}
+
+/* #instructions-div {
+
+} */
 
 
 .letters {
@@ -220,6 +268,10 @@ align-self: center;
     display: none;
 }
 
+.show {
+    display: block;
+}
+
 .no-opacity {
     opacity: 0;
 }
@@ -228,13 +280,35 @@ align-self: center;
     opacity: 1;
 }
 
-button {
+
+/* 'cheat' button */
+#cheat {
     background-color: black;
     color: white;
     border: 2px solid white;
     width: 150px;
     height: 35px;
 }
+
+
+/* End game screen button */
+#newgame {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    width: 150px;
+    height: 35px;
+}
+
+/* button {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    width: 150px;
+    height: 35px;
+} */
+
+
 
 .test {
     font-size: 30pt;

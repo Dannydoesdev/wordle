@@ -128,21 +128,48 @@ const alpha = Array.from(Array(26)).map((e, i) => i + 65);
 const alphabet = alpha.map((x) => String.fromCharCode(x));
 console.log(alphabet);
 
-function generateAlpha(array) {
-    
+
+function generateUnusedLetters(array) {    
     
     for (let letter of array) {
         let newLetterDiv = document.createElement('div')
         console.log(letter);
         newLetterDiv.id = `unused${letter}`
         newLetterDiv.classList.add('unused-letter-class')
-        // newLetterDiv.classList.add('unused-letters')
         newLetterDiv.innerText = letter;
+
+        newLetterDiv.addEventListener('click', function () {
+            inputClickedUnusedLetter(letter);
+        })
+        // newLetterDiv.classList.add('unused-letters')
+        
         unusedLettersDiv.appendChild(newLetterDiv);
    }
 }
 
-generateAlpha(alphabet);
+generateUnusedLetters(alphabet);
+
+
+
+
+function inputClickedUnusedLetter(letter) {
+   
+    arrName = `newArr${rowCounter}`;
+    console.log(letter);
+    console.log(inputArr);
+    if (inputObj[arrName].length <= 4) { 
+        inputObj[arrName].push(letter);
+        // console.log(inputObj)
+        } else if (inputObj[arrName].length == 5) {
+            console.log('too many letters')
+    }
+    
+
+    // console.log(inputObj[arrName]);
+    // inputObj[arrName].push(letter);
+    // console.log(inputObj[arrName]);
+    updateDivs(inputObj[arrName])
+}
 
 
 function hideUnusedLetters() {
@@ -179,6 +206,9 @@ function generateUsedLetters(array) {
         newLetterDiv.classList.add('no-opacity')
         // newLetterDiv.classList.add('unused-letters')
         newLetterDiv.innerText = letter;
+        newLetterDiv.addEventListener('click', function () {
+            inputClickedUsedLetter(letter, newLetterDiv);
+        })
         usedLettersDiv.appendChild(newLetterDiv);
    }
 }
@@ -204,16 +234,32 @@ function showUsedLetters() {
             }
             }
         }
-        // if (oneUnusedLetterDiv.innerText == allTypedLetters[0].innerText)
-            // oneUnusedLetterDiv.classList.add('no-opacity')
-        // console.log(oneUsedLetterDiv.innerText)
-        // console.log(allUsedLetters)
 
     }
+
+
+function inputClickedUsedLetter(letter, clickedDiv) {
    
-    // console.log(allUnusedLetterDivs)
-    // console.log('input letters =')
-    // console.log(allUsedLetters)
+    arrName = `newArr${rowCounter}`;
+    console.log(letter);
+    console.log(inputArr);
+
+    if (clickedDiv.classList.contains('full-opacity')) {
+
+    if (inputObj[arrName].length <= 4) {
+        inputObj[arrName].push(letter);
+        // console.log(inputObj)
+    } else if (inputObj[arrName].length == 5) {
+        console.log('too many letters')
+    }
+    
+
+    // console.log(inputObj[arrName]);
+    // inputObj[arrName].push(letter);
+    // console.log(inputObj[arrName]);
+    updateDivs(inputObj[arrName])
+}
+}
 
 
 
@@ -366,7 +412,22 @@ let todaysWordleArr = todaysWordle()
 // const submitButton = document.getElementById('submit');
 // submitButton.addEventListener('click', submitGuess);
 
+
+const instructionsButton = document.getElementById('instructions-button')
+const instructionsDiv = document.getElementById('instructions-div')
+
+instructionsButton.addEventListener('click', showInstructions)
+
+function showInstructions() {
+    // instructionsDiv.classList.toggle('full-opacity')
+    instructionsDiv.classList.toggle('show')
+}
+
+
+
+
 document.body.addEventListener('keyup', checkForSubmit)
+
 
 function checkForSubmit(e) {
 if (e.code.includes('Enter')) {
@@ -375,6 +436,15 @@ if (e.code.includes('Enter')) {
     }
 }
 
+
+const submitButton = document.getElementById('submit-button')
+submitButton.addEventListener('click', checkForSubmitButton)
+
+function checkForSubmitButton() {
+        checkValidWords(inputObj[arrName])    
+        // submitGuess()
+        
+    }
 
 
 function checkValidWords(submittedArray) {
@@ -895,11 +965,11 @@ function wordleDupeFix() {
 const cheatButton = document.getElementById('cheat');
 const output = document.getElementById('output');
 let newH = document.createElement('h2');
-newH.classList.add('hide');
+newH.classList.add('no-opacity');
 newH.innerHTML= capitaliseThis(randomWord);
 output.appendChild(newH);
 cheatButton.addEventListener('click', () => {
-        newH.classList.toggle('hide');
+        newH.classList.toggle('full-opacity');
     })
 
 
