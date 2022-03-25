@@ -3,7 +3,6 @@ body {
     color: white;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    /* padding-bottom: 100px; */
     display:grid;
     grid-template-columns: 1fr 2fr 1fr;
 }
@@ -31,34 +30,22 @@ header {
 }
 
 #unused-letters > div {
-align-self: center;
-
-height: 50px;
-width: 55px;
-margin: 0px 3px;
-line-height: 50px;  
-
-
-box-sizing: border-box;
-
-  /* height: 40px;
-  margin: 0px 3px;
-  line-height: 40px; */
-  /* width: 20px; */
-  /* border: 1px inset white; */
-  background-color: black;
-  color: white;
-
-
-  transition-property: background-color, transform, opacity;
-  transition-duration: 0.5s, 1.5s, 1.5s;
-  transition-timing-function: ease-in;
-
-  animation-duration: 8s;
-  animation-name: pulse;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  box-shadow: 16px 16px 10px white;
+    align-self: center;
+    height: 50px;
+    width: 55px;
+    margin: 0px 3px;
+    line-height: 50px;  
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    transition-property: background-color, transform, opacity;
+    transition-duration: 0.5s, 1.5s, 1.5s;
+    transition-timing-function: ease-in;
+    animation-duration: 8s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px white;
 
 }
 
@@ -71,7 +58,6 @@ box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin-left: 30px;
-    /* border: 1px solid white; */
 }
 
 #used-letters > h3 {
@@ -79,35 +65,16 @@ box-sizing: border-box;
 }
 
 #used-letters > div {
-align-self: center;
-height: 50px;
+    align-self: center;
+    height: 50px;
     width: 55px;
     margin: 0px 3px;
     line-height: 50px;  
-
-
     box-sizing: border-box;
-
-/* height: 40px;
-  margin: 0px 3px;
-  line-height: 40px; */
-  /* width: 20px; */
-  /* border: 2px outset white; */
-  /* background-color: black; */
-  color: white;
-
-  transition-property: background-color, transform, opacity;
-  transition-duration: 0.5s, 1.5s, 1.5s;
-  transition-timing-function: ease-in;
-
-  /* animation-duration: 8s;
-  animation-name: pulse;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  box-shadow: 16px 16px 10px white; */
-
-
-  /* display: flex; */
+    color: white;
+    transition-property: background-color, transform, opacity;
+    transition-duration: 0.5s, 1.5s, 1.5s;
+    transition-timing-function: ease-in;
 }
 
 #usedZ {
@@ -121,7 +88,6 @@ height: 50px;
 }
 
 #submit-button {
-
     background-color: black;
     color: white;
     height: 55px;
@@ -135,7 +101,6 @@ height: 50px;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px white;
-
 }
 
 #timed-button{
@@ -149,7 +114,6 @@ height: 50px;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-
 
 #speed-button{
     background-color: black;
@@ -185,11 +149,6 @@ height: 50px;
 
 }
 
-/* #top-level-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-} */
 
 .letters {
     display:flex;
@@ -199,15 +158,8 @@ height: 50px;
     justify-content: center;
 }
 
-/* div {
-    transition-property: all;
-    transition-duration: 5s;
-    transition-timing-function: ease-in-out;
-    background-color: black; 
-}*/
-
 .oneletter {
-    /* border: 2px inset outset white; */
+
     background-color: black;
     width: 38px;
     height: 38px;
@@ -219,38 +171,19 @@ height: 50px;
     transition-property: background-color, transform;
     transition-duration: 0.5s, 4s;
     transition-timing-function: ease-in, ease-in-out;
-/* 
-    animation-duration: 8s; */
-    /* animation-duration: 4s; */
-   
     animation-duration: 6s;
     animation-name: pulse;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    /* box-shadow: 16px 16px 10px white; */
 }
 
 @keyframes pulse {
     from {
-        /* box-shadow: 80px 80px 80px white; */
-        /* box-shadow: 20px 20px 10px white; */
-        /* box-shadow: -16px -16px 10px white; */
-        /* box-shadow: -8px -8px 8px white; */
-
-        /* box-shadow: -8px 8px 8px white; */
         box-shadow: -8px 8px 8px #ffffff82;
-
-        
     }
   
     to {
-        /* box-shadow: 7px 7px 10px white; */ 
-        /* box-shadow: 10px 10px 10px white; */
-        /* box-shadow: 8px 8px 14px white; */
-        /* box-shadow: 8px 8px 14px white; */
-
         box-shadow: 8px 8px 14px #ffffffdb;
-
     }
   }
 
@@ -258,46 +191,33 @@ height: 50px;
 
 
 .grey {
-    /* background-color: grey; */
     background-color: #7c7878d6;
     animation-duration: 8s;
     animation-name: pulse-grey;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px grey;
-    
-    /* transform-origin: top; */
-    /* transform: rotate(360deg); */
-     /* skew(-5deg); */
 }
 
 @keyframes pulse-grey {
     from {
-        /* box-shadow: 80px 80px 80px grey; */
         box-shadow: 80px 80px 80px #808080b8;
     }
-
   
     to {
-        /* box-shadow: 7px 7px 10px grey; */
+
         box-shadow: 80px 80px 80px #808080b8;
     }
   }
 
   .yellow {
-    /* background-color: rgb(201, 201, 32); */
-
     background-color: rgb(255 255 0 / 72%);
     border: 1px solid white;
-
     animation-duration: 8s;
     animation-name: pulse-yellow;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px yellow;
-/* 
-    padding: 9px; */
-    /* transform: rotate(360deg); */
 }
 
 .letters .green {
@@ -305,35 +225,23 @@ height: 50px;
 }
 
 @keyframes pulse-yellow {
-    /* from {
-        box-shadow: 80px 80px 80px yellow;
-    } */
     0% {
         box-shadow: 80px 80px 80px #ffff009c;
     }
     100% {
         box-shadow: 7px 7px 10px #ffff0061;
     }
-/*   
-    to {
-        box-shadow: 7px 7px 10px yellow;
-    } */
   }
 
   .green {
-    /* background-color: green; */
     background-color: #218e21d4;
-
     border: 2px solid white;
     animation-duration: 8s;
-    /* padding: 8px; */
-    
     animation-name: pulse-green;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     box-shadow: 16px 16px 10px green;
 
-    /* transform: rotate(360deg); */
 }
 
 .letters .green {
@@ -341,16 +249,12 @@ height: 50px;
 }
 
 
-
 @keyframes pulse-green {
     from {
-        /* box-shadow: 80px 80px 80px green; */
         box-shadow: 80px 80px 80px #008000a1;
     }
 
-  
     to {
-        /* box-shadow: 7px 7px 10px green; */
         box-shadow: 80px 80px 80px #008000a3;
     }
   }
@@ -381,7 +285,6 @@ height: 50px;
     height: 35px;
 }
 
-
 #lose-new-game {
     background-color: black;
     color: white;
@@ -408,20 +311,7 @@ height: 50px;
     animation-name: pulse;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-
 }
-
-
-
-/* button {
-    background-color: black;
-    color: white;
-    border: 2px solid white;
-    width: 150px;
-    height: 35px;
-} */
-
-
 
 .test {
     font-size: 24pt;
@@ -430,40 +320,11 @@ height: 50px;
 }
 
 .endgame {
-    
-    /* line-height: 180px;
-    text-align: center;
-    width: 60%;
-    height: 50%;
-    overflow: none;
-    background-color: black;
-    color:white;
-
-    position: absolute;
-    z-index: 1;
-    top: 150px;
-    opacity: 85%;
-    left: 320px;
-    right: 99px;
-    bottom: 111px; */
-
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-
-    /* display: block; */
- 
-  
-    /* display: none; */
     visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-
     opacity: 0%;
-
- /* opacity: 90%; */
-
     line-height: 100px;
     text-align: center;
     width: 90%;
@@ -474,16 +335,12 @@ height: 50px;
     position: absolute;
     z-index: 1;
     top: 125px;
-   
-  
     left: 77px;
     right: 99px;
     bottom: 111px;
-
     transition-property: all;
     transition-duration: 3s;
     transition-timing-function: ease-in;
-
 }
 
 #endgame-display {
@@ -525,15 +382,10 @@ height: 50px;
     border-radius: 17px;
     animation-duration: 4s;
     animation-name: pulse-green;
-    animation-iteration-count: 3;
+    animation-iteration-count: infinite;
     animation-direction: alternate;
-    /* box-shadow: 6px 6px 70px green; */
     box-shadow: 6px 6px 500px 0px #259625d1;
     padding: 14px 100px;
-    /* transition-property: all;
-    transition-duration: 30s;
-    transition-timing-function: ease-in; */
-
 }
 
 .winning-word {
@@ -546,60 +398,16 @@ height: 50px;
     animation-direction: alternate;
 }
 
-
-/* 
-.winning-word {
-
-    color: green;
-    font-size: 26pt;
-    border-style: none;
-    border-radius: 17px;
-    animation-duration: 4s;
-    animation-name: pulse-green;
-    animation-iteration-count: 3;
-    animation-direction: alternate;
-    box-shadow: 6px 6px 70px green; - double commented
-    box-shadow: 6px 6px 500px 0px #259625d1;
-    padding: 14px 100px;
-    transition-property: all;
-    transition-duration: 30s;
-    transition-timing-function: ease-in;
-
-}
-*/
-
-/* .unused-letters {
-    height: 20px;
-    width: 20px;
-    border: 1px dotted white;
-    background-color: black;
-    color: white;
-    display: flex;
-  } */
-
-/* 
-  .losing-word {
-    color: green;
-    font-size: 26pt;
-    border-style: none;
-    border-radius: 17px;
-    animation-duration: 4s;
-    animation-name: pulse-green;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    box-shadow: 6px 6px 70px green;
-} */
-
 .losegame {
     visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     opacity: 0%;
-    line-height: 100px;
+    line-height: 30px;
     text-align: center;
-    width: 40%;
-    height: 40%;
+    width: 50%;
+    height: 60%;
     overflow: none;
     background-color: black;
     color: white;
@@ -608,22 +416,14 @@ height: 50px;
     top: 259px;
     left: 253px;
     right: 99px;
+    margin-top: -120px;
     bottom: 111px;
     border-radius: 70px;
     padding: 20px;
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     transition-timing-function: ease-in;
-
-    /* top: 202px;
-    left: 386px;
-    right: 99px;
-    bottom: 111px;
-      bottom: 111px;
-    border-radius: 40px; */
-
 }
-
 
 #losegame-display {
     visibility: visible;
@@ -636,20 +436,17 @@ height: 50px;
     margin-top: -120px;
     line-height: 55px;
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: infinite;
     transition-timing-function: ease-in;
-
     animation-duration: 8s;
     animation-name: pulse;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 3;
     animation-direction: alternate;
 }
 
-
-
-  #grey {
+#grey {
       color: grey
-  }
+}
 
   #yellow {
     color: yellow
