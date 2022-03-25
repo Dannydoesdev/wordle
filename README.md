@@ -18,14 +18,14 @@ It took quite a few hours and too many lines of code to figure it out, but once 
 ### Features:
 
 - You can make guesses by either using your keyboard or clicking the letters in the 'unused'/'used' sections of the page
-- Enter or the 'submit' button will allow you to submit
+  -  Enter or the 'submit' button will allow you to submit
 
 - I learnt about localStorage and implemented some variables which persist through leaving the page etc to store your wins and streaks of wins
 
 - I played around a lot with transitions & animations to get a 'vibe'. It did result in a lot of movement on page so apologies for any nausea!
 
-- 2 time limit options: I personally got pretty good at Wordle (from never playing before), so find time limits to be a great challenge
-- For me, the 90s round is great, but for Wordle fiends there is a 30 'lightning round'
+- 2 time limit options: I personally got pretty good at Wordle when making this (from never playing before), so find time limits to be a great challenge
+  - For me, the 90s round is great, but for Wordle fiends there is a 30 'lightning round'
 
 - You'll see some creative use of the used and unused letters in your guesses, was trying to keep it a bit fresh :)
 
@@ -38,7 +38,7 @@ It took quite a few hours and too many lines of code to figure it out, but once 
 - Dark/light mode
 - Sharing results
 - Make a localStorage object to do things like:
-- Track lowest guess counter, player name from input, number of guess history, past Wordles guessed etc
+  - Track lowest guess counter, player name from input, number of guess history, past Wordles guessed etc
 
 
 ## Wordle Rules:
@@ -47,7 +47,7 @@ Wordle is a fairly simple and fun game
 
 When you load/refresh the page there will be a new 'Wordle'
 
-- **A Wordle is a hidden 5 letter word you need to find through calculated guesses**
+**A Wordle is a hidden 5 letter word you need to find through calculated guesses**
 
 - You have to guess the Wordle in six goes or less
 - Every word you enter must be in a valid word list
