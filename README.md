@@ -67,8 +67,9 @@ You can find me at [Linkedin](https://www.linkedin.com/in/danieltmcgee/)
 
 ### Known bugs
 
+- Possible performance issues - on load you can see the end screens before they fade to no visibility
 - You can start timed mode after starting Wordle fill out
-- Need to create a reset fn without refreshing page - call new Wordle, clear all inputs etc
+  -  Need to create a reset fn without refreshing page - call new Wordle, clear all inputs etc
 
 <!--
 ```markdown

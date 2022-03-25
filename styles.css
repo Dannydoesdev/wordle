@@ -359,8 +359,8 @@ header {
     left: 77px;
     right: 99px;
     bottom: 111px;
-    transition-property: all;
-    transition-duration: 3s;
+    transition-property: all , visibility;
+    transition-duration: 3s, 1ms;
     transition-timing-function: ease-in;
 }
 
@@ -373,9 +373,9 @@ header {
     height: 95%;
     margin-top: -60px;
     line-height: 55px;
-    transition-property: all;
+    /* transition-property: all;
     transition-duration: 3s;
-    transition-timing-function: ease-in;
+    transition-timing-function: ease-in; */
 
 }
 
@@ -441,8 +441,8 @@ header {
     bottom: 111px;
     border-radius: 70px;
     padding: 20px;
-    transition-property: all;
-    transition-duration: 2s;
+    transition-property: all, visibility;;
+    transition-duration: 2s, 1ms;
     transition-timing-function: ease-in;
 }
 
@@ -456,8 +456,8 @@ header {
     height: 70%;
     margin-top: -120px;
     line-height: 55px;
-    transition-property: all;
-    transition-duration: infinite;
+    /* transition-property: all;
+    transition-duration: infinite; */
     transition-timing-function: ease-in;
     animation-duration: 8s;
     animation-name: pulse;
