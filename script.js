@@ -56,6 +56,228 @@
 // Research web audio API and add sound effects to your game
 // Be creative! Bend the rules and give it a twist!
 
+
+//THINKING THROUGH DUPES PROPERLY THIS TIME - not just rushing it
+
+
+// (wArr) wordleArr = wordle.split('')
+// (gArr) guessArr = guess.split('')
+// (wLeft) worldeLeft = wordle.split('')
+// (gLedt) guessLeft = guess.split('')
+
+
+// wordleArr = [W,O,R,S,E]
+// guessArr = [W,O,W,E,E]
+// 						0,1,2,3,4
+
+
+// for (i in wArr) {
+// 	if (wArr[i] === gArr[i]){
+// 		gArr = Green
+// 		wLeft[i] == ''
+// 		gLeft[i] == ''
+// }
+// }
+
+
+// wArr[0] = gArr[0]? W = W
+// Yes -> Green
+// wLeft[0] = ''
+// gLeft[0] = ''
+
+// wArr[1] = gArr[1]? O = O
+// Yes -> Green
+// wLeft[1] = ''
+// gLeft[1] = ''
+
+// wLeft = ['','',R,S,E]
+// gLeft = ['','',W,E,E]
+
+
+// wArr[2] = gArr[2]? R != W
+// No -> Do nothing
+// wLeft[2] = R
+// gLeft[2] = W
+
+// wArr[3] = gArr[3]? S != E
+// No -> Do nothing
+// wLeft[2] = S
+// gLeft[2] = E
+
+
+// wArr[4] = gArr[4]? E = E
+// Yes -> Green
+// wLeft[4] = ''
+// gLeft[4] = ''
+
+
+// wLeft = ['','',R,S,'']
+// gLeft = ['','',W,E,'']
+
+
+// for (i in wLeft){	
+// 	(if wLeft.includes(gLeft[i]) && !(wLeft[i] = ''))){
+// 	gLeft[i] - make yellow
+
+// } else
+
+// 	gLeft[i] - make gray	
+
+// }
+
+
+
+// ANOTHER EXAMPLE
+
+// wArr = [E,A,A,E,R]
+// gArr = [R A R A R]
+
+
+// wordleArr = [E,A,A,E,R]
+// guessArr = [R,A,R,A,R]
+// 			0,1,2,3,4
+
+// Correct letters:
+
+// gArr[1]
+// 1st A in guess = green
+
+// gArr[4]
+// 3rd R in guess = green
+
+// gArr[3]
+// 2nd A in guess = yellow
+
+// gArr[0] + [2] = grey
+
+// for (i in wArr) {
+// 	if (wArr[i] === gArr[i]){
+// 		gArr = Green
+// 		wLeft[i] == ''
+// 		gLeft[i] == ''
+// }
+// }
+
+
+// wArr[0] = gArr[0]? E != R
+// No -> Do nothing
+// wLeft[2] = E
+// gLeft[2] = R
+
+// wArr[1] = gArr[1]? A = A
+// Yes -> Green
+// wLeft[1] = ''
+// gLeft[1] = ''
+
+// wLeft = [E,'',A,E,R]
+// gLeft = [R,'',R,A,R]
+
+
+// wArr[2] = gArr[2]? A != R
+// No -> Do nothing
+// wLeft[2] = A
+// gLeft[2] = R
+
+// wArr[3] = gArr[3]? E != A
+// No -> Do nothing
+// wLeft[2] = E
+// gLeft[2] = A
+
+
+// wArr[4] = gArr[4]? R = R
+// Yes -> Green
+// wLeft[4] = R
+// gLeft[4] = R
+
+
+// wLeft = [E,'',A,E,'']
+// gLeft = [R,'',R,A,'']
+
+
+// for (i in wLeft){	
+// 	(if wLeft.includes(gLeft[i]) && !(wLeft[i] = ''))){
+// 	gLeft[i] - make yellow
+// 	gLeft[i] = ''
+
+// } else
+
+// 	gLeft[i] - make gray	
+// 	gLeft[i] = ''
+
+// }
+
+
+// wLeft = [E,'',A,E,'']
+// gLeft = [R,'',R,A,'']
+
+
+// wArr includes gArr[0]? R not in wLeft
+// gArr[0] - make gray
+// gLeft[0] = ''
+
+// wArr[1] = '' - skip
+
+// wArr includes gArr[2]? R not in wLeft
+// gArr[2] - make gray
+// gLeft[2] = ''
+
+
+// wArr includes gArr[3]? A IS in w Left
+// gArr[3] - make yellow
+// gArr[3] = ''
+
+
+
+// wLeft = [E,'',A,E,'']
+// gLeft = ['','','','','']
+
+
+// Due to inputs being an object already
+
+// wordleArr = wordleArr
+// guessArr = guessObj[guessArr]
+
+
+// wordleLeft + gLeft can be arrays - but must be cleared before next guess (5x pop?) or just = []
+
+// Otherwise can be objects that remain?
+
+// x = 0
+
+// guessLeftObj = {}
+
+// guessLeftObj[GuessLeft][x] = guessArr()
+
+// wordleLeftObj = {}
+// wordleLeftObj[WorldeLeft][x] = wordleArr.split()
+
+// After fn runs:
+// x++
+
+
+// So guessLeftObj something like:
+
+// {
+// guessLeft0: ['','','','','']
+// guessLeft1: ['','','','','']
+// }
+
+
+// wordleLeftObj something like:
+
+// wordleLeft Obj {
+// wordleLeft1: [A,'','',R,'']
+// wordleLeft2: ['',E,'',R,'']
+// }
+
+// BUT - we want to clear all to start a new game (instead of refreshing) - easier if arrays and only need to clear the entire input Obj?
+
+// Otherwise need to iterate all arrays of all objs & .pop?
+
+//OR just GuessLeftObj = {}
+
+
+
 let winCounter = 0;
 
 let rowCounter = 1;
@@ -280,19 +502,6 @@ function checkInput(e) {
     // console.log(e)
     arrName = `newArr${rowCounter}`;
 
-    // let arrName = `newArr${rowCounter}`;
-    
-    // inputObj[arrName] = [];
-    // userInput.innerText = userInput.toLowerCase()
-    // console.log(e)
-    // let currentLetter = e.data
-    
-    // let arrName = `newArr${rowCounter}`
-    // console.log('current array name' + arrName)
-    // inputObj[arrName] = [];
-    // console.log(inputObj)
-    // console.log(rowCounter)
-
     let keypress = e.code
 
     //give currentLetter something outside loop
@@ -488,28 +697,8 @@ function checkValidWords(submittedArray) {
 
 function submitGuess() {
     let fixArrName = `newArr${rowCounter}`;
-    // wordleArr - array of individual wordle letters
-    //inputArr - array of individual input letters
-    // console.log(inputArr)
-    // console.log(inputArr.length)
-    // if (!(inputArr.length = 5)) {
-    //     alert('you need to type 5 letters')
-    // }
-    // let newP = document.createElement('p')
-    // inputObj[rowCounter] = inputArr
-    // console.log(array)
-    // console.log(fixArrName)
-    // arrName = `newArr${rowCounter}`;
     inputArr = inputObj[fixArrName]
-    // console.log(inputArr)
-    // if (todaysWordleArr == inputArr) {
-    //     alert('YOU WON!!!')
-    //     console.log('WINNERWINNER')
-    //     // break
-    // }
-
-    // console.log(inputArr.length)
-
+   
     //error logging - good enough for now
     if (inputArr.length <= 4) {
         console.log('not enough letters yo')
@@ -528,98 +717,302 @@ function submitGuess() {
     //run duplicate letter fn
 
     
+    //NEW OLD DUPE FIX
+    // newDupeFix()
 
- 
+
+
+    //3RD DUPE FIX FROM HERE:
+    //HAD TO DO MORE STUFF TO GET IT RUNNING - writing everything out really helped
+
+
+    console.log(todaysWordleArr)
+    wordleLeft = todaysWordleArr.slice()
+    console.log(`wordleLeft before loop`)
+    console.log(wordleLeft)
+
+    guessLeft = inputArr.slice()
+    console.log(`guessLeft before loop`)
+    console.log(guessLeft)
+
+    for (letter in todaysWordleArr) {
+        console.log(letter)
+        console.log(todaysWordleArr)
+        let idVar = `letter${rowCounter}${letter}`
+
+        console.log(idVar)
+        if (todaysWordleArr[letter] === inputArr[letter]){
+            
+            console.log(`${inputArr[letter]} = Green`)
+            
+            let thisDiv = document.getElementById(idVar)
+            thisDiv.classList.add('green')
+
+            wordleLeft[letter] = ''
+            guessLeft[letter] = ''
+
+            console.log(`wordleLeft in if loop`)
+            console.log(wordleLeft)
+            console.log(`guessLeft in if loop`)
+            console.log(guessLeft)
+        }
+        console.log(`wordleLeft out of loop`)
+        console.log(wordleLeft)
+        console.log(`guessLeft out of if loop`)
+        console.log(guessLeft)
+    }
+
+    
+    //USE THIS  let idVar = `letter${rowCounter}${inputArr[letter]}`
+    
+    for (letter in guessLeft) {
+        console.log(letter)
+        console.log(guessLeft)
+        let idVar = `letter${rowCounter}${letter}`
+        if ((wordleLeft.includes(guessLeft[letter])) && (guessLeft[letter] != '')) {
+            console.log(`${inputArr[letter]} = Yellow`)
+            
+        let thisDiv = document.getElementById(idVar)
+            thisDiv.classList.add('yellow')
+            
+        // console.log("Index of remaining yellow letter in wordle (to remove):")
+        // console.log(wordleLeft.indexOf(guessLeft[letter]))
+
+        let wordleLeftMatch = wordleLeft.indexOf(guessLeft[letter])
+        wordleLeft[wordleLeftMatch] = ''
+        guessLeft[letter] = ''
+
+        console.log(`wordleLeft in yellow if loop`)
+        console.log(wordleLeft)
+        console.log(`guessLeft in yellow if loop`)
+        console.log(guessLeft)
+    }
+        else if (!(wordleLeft.includes(guessLeft[letter])) && (guessLeft[letter] != '')) {
+          console.log(`${inputArr[letter]} = Grey`)
+          
+          let thisDiv = document.getElementById(idVar)
+          thisDiv.classList.add('grey')
+            
+          guessLeft[letter] = ''
+          console.log(`wordleLeft in grey if loop`)
+          console.log(wordleLeft)
+          console.log(`guessLeft in grey if loop`)
+          console.log(guessLeft)
+      }
+    }
+
+        //OLD SUBMISSION LOGIC
+
+//         for (let thisInput in inputArr) {
+//         let idVar = `letter${rowCounter}${thisInput}`
+//         console.log(idVar)
+//         console.log(inputArr[thisInput])
+//     if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+//         let thisDiv = document.getElementById(idVar)
+//         thisDiv.classList.add('green')
+//     } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+//         let thisDiv = document.getElementById(idVar)
+//         thisDiv.classList.add('yellow')
+//     } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+//         let thisDiv = document.getElementById(idVar)
+//         thisDiv.classList.add('grey')
+
+//     }
+
+// }
+
+    console.log(`wordleLeft all loops finished`)
+    console.log(wordleLeft)
+    console.log(`guessLeft all loops finished`)
+    console.log(guessLeft)
+
+    //MY NOTES:
+    // (wArr) wordleArr = wordle.split('')
+    // (gArr) guessArr = guess.split('')
+    // (wLeft) wordleLeft = wordle.split('')
+    // (gLeft) guessLeft = guess.split('')
+
+
+    // wArr = [E,A,A,E,R]
+    // gArr = [R A R A R]
+
+
+    // wordleArr = [E,A,A,E,R]
+    // guessArr = [R,A,R,A,R]
+    //                         0,1,2,3,4
+
+    // Correct letters:
+
+    // gArr[1]
+    // 1st A in guess = green
+
+    // gArr[4]
+    // 3rd R in guess = green
+
+    // gArr[3]
+    // 2nd A in guess = yellow
+
+    // gArr[0] + [2] = grey
+
+    // for (i in wArr) {
+    //     if (wArr[i] === gArr[i]){
+    //         gArr = Green
+    //         wLeft[i] == ''
+    //         gLeft[i] == ''
+    // }
+    // }
+
+
+    // wArr[0] = gArr[0]? E != R
+    // No -> Do nothing
+    // wLeft[2] = E
+    // gLeft[2] = R
+
+    // wArr[1] = gArr[1]? A = A
+    // Yes -> Green
+    // wLeft[1] = ''
+    // gLeft[1] = ''
+
+    // wLeft = [E,'',A,E,R]
+    // gLeft = [R,'',R,A,R]
+
+
+    // wArr[2] = gArr[2]? A != R
+    // No -> Do nothing
+    // wLeft[2] = A
+    // gLeft[2] = R
+
+    // wArr[3] = gArr[3]? E != A
+    // No -> Do nothing
+    // wLeft[2] = E
+    // gLeft[2] = A
+
+
+    // wArr[4] = gArr[4]? R = R
+    // Yes -> Green
+    // wLeft[4] = R
+    // gLeft[4] = R
+
+
+    // wLeft = [E,'',A,E,'']
+    // gLeft = [R,'',R,A,'']
+
+
+    // for (i in wLeft){
+    //     (if wLeft.includes(gLeft[i]) && !(wLeft[i] = ''))){
+    //     gLeft[i] - make yellow
+    //     gLeft[i] = ''
+
+    // } else
+
+    //     gLeft[i] - make gray
+    //     gLeft[i] = ''
+
+    // }
+
+
+    // wLeft = [E,'',A,E,'']
+    // gLeft = [R,'',R,A,'']
+
+
+    // wArr includes gArr[0]? R not in wLeft
+    // gArr[0] - make gray
+    // gLeft[0] = ''
+
+    // wArr[1] = '' - skip
+
+    // wArr includes gArr[2]? R not in wLeft
+    // gArr[2] - make gray
+    // gLeft[2] = ''
+
+
+    // wArr includes gArr[3]? A IS in w Left
+    // gArr[3] - make yellow
+    // gArr[3] = ''
+
+
+
+    // wLeft = [E,'',A,E,'']
+    // gLeft = ['','','','','']
+
+
 
 
     //UNCOMMENT FROM HERE
 
-    console.log(inputObj)
-    let results = document.getElementById('results')
-    for (let thisInput in inputArr) {
-        // console.log(thisInput)
-        let idVar = `letter${rowCounter}${thisInput}`
-        let thisDivDupeCheck = document.getElementById(idVar)
+    
+      //OLD SUBMISSION LOGIC
 
-        // console.log(firstPlayerDupeReturned.length)
-        // console.log(firstPlayerDupeReturned)
-        // console.log(thisDivDupeCheck)
-        // console.log(thisDivDupeCheck.classList)
-        // console.log(inputArr[thisInput])
-        // console.log(firstPlayerDupeReturned[0])
+    // console.log(inputObj)
+    // // let results = document.getElementById('results')
+    // for (let thisInput in inputArr) {
+    //     // console.log(thisInput)
+    //     let idVar = `letter${rowCounter}${thisInput}`
+    //     let thisDivDupeCheck = document.getElementById(idVar)
+
+    //     // console.log(firstPlayerDupeReturned.length)
+    //     // console.log(firstPlayerDupeReturned)
+    //     // console.log(thisDivDupeCheck)
+    //     // console.log(thisDivDupeCheck.classList)
+    //     // console.log(inputArr[thisInput])
+    //     // console.log(firstPlayerDupeReturned[0])
         
-        if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 1 && firstPlayerDupeReturned[0] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
-            console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
-            thisDivDupeCheck.classList.add('grey');
-            continue
+    //     if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 1 && firstPlayerDupeReturned[0] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
+    //         console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
+    //         thisDivDupeCheck.classList.add('grey');
+    //         continue
 
 
-        }
+    //     }
 
-        //CURRENTLY BROKEN
+    //     //CURRENTLY BROKEN
 
-        // else if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 2 && firstPlayerDupeReturned[0] == inputArr[thisInput] || firstPlayerDupeReturned[1] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) || todaysWordleArr.includes(firstPlayerDupeReturned[1]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
-        //     console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
-        //     console.log(`added grey to ${firstPlayerDupeReturned[1]}`)
-        //     thisDivDupeCheck.classList.add('grey');
+    //     // else if (firstPlayerDupeReturned && firstPlayerDupeReturned.length == 2 && firstPlayerDupeReturned[0] == inputArr[thisInput] || firstPlayerDupeReturned[1] == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned[0]) || todaysWordleArr.includes(firstPlayerDupeReturned[1]) && !(thisDivDupeCheck.classList.contains('yellow')) && !(thisDivDupeCheck.classList.contains('green'))) {
+    //     //     console.log(`added grey to ${firstPlayerDupeReturned[0]}`)
+    //     //     console.log(`added grey to ${firstPlayerDupeReturned[1]}`)
+    //     //     thisDivDupeCheck.classList.add('grey');
             
-        //     continue
-        // }    
+    //     //     continue
+    //     // }    
             
             
-                // results.appendChild(newP)
+
             
             
         
-            // if (firstPlayerDupeReturned == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned)) {
-            //     thisDivDupeCheck.classList.add('grey');
-            //     continue
+    //         // if (firstPlayerDupeReturned == inputArr[thisInput] && todaysWordleArr.includes(firstPlayerDupeReturned)) {
+    //         //     thisDivDupeCheck.classList.add('grey');
+    //         //     continue
         
 
-            // if (firstPlayerDupeReturned) {
-            //     for (let thisInput in inputArr) {
+    //         // if (firstPlayerDupeReturned) {
+    //         //     for (let thisInput in inputArr) {
                 
-            //     }
-            // }
+    //         //     }
+    //         // }
 
 
-            // console.log('test' + todaysWordleArr[wordleLetter])
-            // console.log('test' + inputArr[wordleLetter])
-         else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
-            // let newP = document.createElement('p')
-            // newP.textContent = `${inputArr[thisInput]} is exactly right`
-            // results.appendChild(newP)
-            // console.log('perfect')
-            // console.log(`#letter${thisInput}`)
-            // console.log(idVar)
-            // let thisDiv = document.querySelector(idVar)
-            let thisDiv = document.getElementById(idVar)
-            thisDiv.classList.add('green')
-            // thisDiv.classList.add('green')
-            // console.log(thisDiv)
-            // console.log(thisDiv.innerHTML)
-            // console.log(thisDiv.classList)
+    //         // console.log('test' + todaysWordleArr[wordleLetter])
+    //         // console.log('test' + inputArr[wordleLetter])
+    //      else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
 
-        } else if (todaysWordleArr.includes(inputArr[thisInput])) {
-            // let newP = document.createElement('p')
-            // console.log('close')
-            // newP.textContent = `${inputArr[thisInput]} is the right letter in the wrong spot`
-            // results.appendChild(newP)
-            let thisDiv = document.getElementById(idVar)
-            thisDiv.classList.add('yellow')
-            // results.appendChild(newP)
-        } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
-            let thisDiv = document.getElementById(idVar)
-            thisDiv.classList.add('grey')
-            // let newP = document.createElement('p')
-            // newP.textContent = `${inputArr[thisInput]} is not in the wordle`
-            // results.appendChild(newP)
-            // results.appendChild(newP)
-            // console.log('no dice')
-        } 
-    }
+    //         let thisDiv = document.getElementById(idVar)
+    //         thisDiv.classList.add('green')
+      
 
-   
+    //     } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+    
+    //         let thisDiv = document.getElementById(idVar)
+    //         thisDiv.classList.add('yellow')
+
+    //     } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+    //         let thisDiv = document.getElementById(idVar)
+    //         thisDiv.classList.add('grey')
+
+    //     } 
+    // }
+
+   //fINISH UNCOMMENTING
 
 
     //hide letters type from unused letter section
@@ -681,36 +1074,105 @@ function submitGuess() {
     // input.value = ''
     let arrName = `newArr${rowCounter}`;
     inputObj[arrName] = [];
-    // for (let wordleLetter in todaysWordleArr) {
-    //     console.log('test' + todaysWordleArr[wordleLetter])
-    //     console.log('test' + inputArr[wordleLetter])
-    //     if (inputArr[wordleLetter] === todaysWordleArr[wordleLetter]) {
-    //         console.log('perfect')
-    //     } else if (inputArr.includes(todaysWordleArr[wordleLetter])) {
-    //         console.log('close')
-    //     } else if (!(inputArr.includes(todaysWordleArr[wordleLetter]))) {
-    //         console.log('no dice')
-    //     }
-        
-   
-    // }
-   
-    // for (let thisInput in inputArr) {
-    //     console.log('test' + inputArr[thisInput])
-    //     if (inputArr[thisInput] === wordleArr[thisInput]) {
-    //         console.log('perfect')
-    //     } else if (inputArr[thisInput])
-        
-   
-    // }
-    // for (letter of )
-    // console.log(input)
-    // console.log(todaysWordleArr)
-    
+
 
 }
 
+console.log(todaysWordleArr)
 
+//2nd DUPE FIX attempt (too advanced for me)
+
+// function newDupeFix() {
+
+//     let newInputArr = `DupeArr${rowCounter}`
+//     let fixArrName = `newArr${rowCounter}`;
+//     inputArr = inputObj[fixArrName]
+
+//     someNewArr = []
+
+//     let correctWord = todaysWordleArr; // update to use Wordle
+    
+//     const guessCheck = {}
+
+
+
+//     for (let i in correctWord) {
+//         // let j = guessCheck.indexOf(i)
+//         if (correctWord[i] === inputArr[i]) {
+//             console.log(inputArr[i])
+//             guessCheck[j] === [inputArr][i]
+//             console.log(guessCheck[i])
+//             // guessCheck[newInputArr][i] === inputArr[i]
+//         }
+//         console.log(guessCheck)
+//     }    
+//     // const characterCount = {};
+
+//     console.log('todays wordle:')
+//     console.log(correctWord)
+
+//     const characterCountObj = {};
+
+//     let Arr = 1
+//     // const characterCount = characterCountObj;
+
+//     // const characterCount = characterCountObj
+
+//     // const characterCount = characterCountObj[newInputArr]
+
+//     // console.log(characterCount)
+
+//     // correctWord.forEach(character => {
+//     //     characterCount[character] = (characterCount[character] || 0) + 1
+//     // });
+
+//     // correctWord.forEach(character => {
+//     //     characterCount[Arr][character] = (characterCount[Arr][character] || 0) + 1
+//     // });
+
+//     // for (let arrayItem in correctWord) {
+//     //     characterCountObj[arrayItem] = correctWord[arrayItem] + 1
+//     // }
+//     // console.log(characterCountObj)
+        
+//     console.log('characterCount before in loop')
+//     // console.log(characterCount)
+// //     correctWord.split('').forEach(character => {
+// //     characterCount[character] = (characterCount[character] || 0) + 1
+// // });
+
+// // for (let oneInput in inputArr) {
+// //     if (inputArr[oneInput] === correctWord[oneInput]) {
+// //         console.log(`characterObj has exact ${characterCount[oneInput]}`)
+// //         console.log(`set ${inputArr[oneInput]} colour to green`)
+// //         // characterCount[oneInput] = characterCount[oneInput] - 1;
+// //         // characterCount[Arr][oneInput] = characterCount[Arr][oneInput] - 1;
+// //     } else if (correctWord.includes(inputArr[oneInput]) && characterCount[oneInput] >= 1) {
+// //          // set colour to yellow when new obj only includes the input (not direct match)
+// //         console.log(`set ${inputArr[oneInput]} colour to yellow`)
+// //         // characterCount[i] = characterCount[i] - 1;
+// //         // characterCount[Arr][oneInput] = characterCount[Arr][oneInput] - 1;
+// //     } else {
+// //         // set colour to grey
+// //         console.log(`set ${inputArr[oneInput]} colour to grey`)
+// //     }
+// //     // characterCount[oneInput] = ''
+// // }
+//     // console.log('input object:')
+//     // console.log(inputObj)
+
+//     // console.log('input arr')
+//     // console.log(inputArr)
+
+//     // console.log('character count:')
+//     // console.log(characterCount)
+//     // // characterCount = {};
+    
+// //     for (i = 0; i > characterCount.length; i++) {
+// //        characterCount[i].pop()
+// //    }
+// //    console.log(characterCount)
+// }
 
 
 
@@ -744,6 +1206,7 @@ function colourBoxes() {
 function endGame() {
 
     document.body.removeEventListener('keyup', checkInput);
+    document.body.removeEventListener('keyup', checkForSubmit);
     document.body.removeEventListener('keyup', checkForSubmit);
     console.log('youve entered the end game');
     const finalScreen = document.getElementById('endgame');
@@ -834,276 +1297,291 @@ function getDupeIndex(array, element) {
 }
 
 
-let dupeTestArr = [1, 2, 1, 3, 4, 3, 5, 1, 2, 4, 1];
-let dupeTestElement = 1;
+
+
+
+// let dupeTestArr = [1, 2, 1, 3, 4, 3, 5, 1, 2, 4, 1];
+// let dupeTestElement = 1;
 
 // let todaysWorldeDupes = getDupes(todaysWordleArr)
 
 
-// console.log(getDupeIndex(dupeTestArr, dupeTestElement))
+// // console.log(getDupeIndex(dupeTestArr, dupeTestElement))
 
-// Get the duplicate letters (if any) from todays wordle
-let todaysWordleDupesTest = getDupes(todaysWordleArr)
+// // Get the duplicate letters (if any) from todays wordle
+// let todaysWordleDupesTest = getDupes(todaysWordleArr)
 
-//Get the duplicate letters (if any) from player input
-// let playerInputDupes = getDupes(inputArr);
+// //Get the duplicate letters (if any) from player input
+// // let playerInputDupes = getDupes(inputArr);
 
-// console.log(inputArr)
-// console.log(playerInputDupes)
+// // console.log(inputArr)
+// // console.log(playerInputDupes)
 
-//Store the dupes so that they can be passed into the indice fn
-let firstDupe = todaysWordleDupesTest[0]
-let secondDupe = todaysWordleDupesTest[1]
+// //Store the dupes so that they can be passed into the indice fn
+// let firstDupe = todaysWordleDupesTest[0]
+// let secondDupe = todaysWordleDupesTest[1]
 
 
-//find & store indexes of first duplicate letter in Wordle
+//MORE UNUSED DUPE TEST (INDICES)
+
+// //find & store indexes of first duplicate letter in Wordle
 // let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstWordleDupeTest)
 
-//find & store indexes of second duplicate letter in Wordle (RARE)
+// //find & store indexes of second duplicate letter in Wordle (RARE)
 // let secondWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, secondWordleDupeTest)
 
 
-if (todaysWordleDupesTest.length == 0) {
-    console.log('no duplicates in todays Wordle')
-} else if (todaysWordleDupesTest.length == 1) {
-    let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstDupe)
-    console.log(`1 duplicate letter: ${firstDupe} located at ${firstWordleDupeIndicesTest[0]} & ${firstWordleDupeIndicesTest[1]} spots`)
-} else if (todaysWordleDupesTest.length == 2) {
-    let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstDupe)
-    let secondWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, secondDupe)
-    console.log(`2 duplicate letters: ${firstDupe} located at ${firstWordleDupeIndicesTest[0]} & ${firstWordleDupeIndicesTest[1]} spots as well as ${secondDupe} located at ${secondWordleDupeIndicesTest[0]} & ${secondWordleDupeIndicesTest[1]} spots`)
-}
+//UNUSED WORDLE DUPE TEST LOGIC
+
+// if (todaysWordleDupesTest.length == 0) {
+//     console.log('no duplicates in todays Wordle')
+// } else if (todaysWordleDupesTest.length == 1) {
+//     let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstDupe)
+//     console.log(`1 duplicate letter: ${firstDupe} located at ${firstWordleDupeIndicesTest[0]} & ${firstWordleDupeIndicesTest[1]} spots`)
+// } else if (todaysWordleDupesTest.length == 2) {
+//     let firstWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, firstDupe)
+//     let secondWordleDupeIndicesTest = getDupeIndex(todaysWordleArr, secondDupe)
+//     console.log(`2 duplicate letters: ${firstDupe} located at ${firstWordleDupeIndicesTest[0]} & ${firstWordleDupeIndicesTest[1]} spots as well as ${secondDupe} located at ${secondWordleDupeIndicesTest[0]} & ${secondWordleDupeIndicesTest[1]} spots`)
+// }
 
 // console.log(todaysWordleDupes)
 // console.log(firstDupe)
 
-console.log(getDupeIndex(todaysWordleArr, firstDupe))
-console.log(getDupeIndex(todaysWordleArr, secondDupe))
-console.log(getDupes(todaysWordleArr))
+// console.log(getDupeIndex(todaysWordleArr, firstDupe))
+// console.log(getDupeIndex(todaysWordleArr, secondDupe))
+// console.log(getDupes(todaysWordleArr))
 // console.log(getDupes(['a', 'a', 'a', 'b', 'c', 'd']))
 // console.log(getDupes(dupeTestArr))
 
-function wordleDupeFix(array) {
+
+//FIRST ATTEMPT AT DUPE FIXING - GOT OUT OF HAND
+
+// function wordleDupeFix(array) {
     
 
-    // let fixArrName = `newArr${rowCounter}`;
-    // inputArr = inputObj[fixArrName]
+//     // let fixArrName = `newArr${rowCounter}`;
+//     // inputArr = inputObj[fixArrName]
 
-    inputArr = array
+//     inputArr = array
 
-    // Get the duplicate letters (if any) from todays wordle & return array
-    let todaysWordleDupes = getDupes(todaysWordleArr)
+//     // Get the duplicate letters (if any) from todays wordle & return array
+//     let todaysWordleDupes = getDupes(todaysWordleArr)
 
-    //Store the Wordle dupes so that they can be passed into the indice fn
-    let firstWordleDupe = todaysWordleDupes[0]
-    let secondWordleDupe = todaysWordleDupes[1]
-    // let thirdDupe = todaysWordleDupes[2]
-
-
-    //find & store indexes of first duplicate letter in Wordle
-    let firstWordleDupeIndices = getDupeIndex(todaysWordleArr, firstWordleDupe)
-
-    //find & store indexes of second duplicate letter in Wordle (RARE)
-    let secondWordleDupeIndices = getDupeIndex(todaysWordleArr, secondWordleDupe)
+//     //Store the Wordle dupes so that they can be passed into the indice fn
+//     let firstWordleDupe = todaysWordleDupes[0]
+//     let secondWordleDupe = todaysWordleDupes[1]
+//     // let thirdDupe = todaysWordleDupes[2]
 
 
-    //Get the duplicate letters entered by player - store as array
-    let playerInputDupes = getDupes(inputArr);
+//     //find & store indexes of first duplicate letter in Wordle
+//     let firstWordleDupeIndices = getDupeIndex(todaysWordleArr, firstWordleDupe)
 
-        //Store the player input dupes so that they can be passed into the indice fn
-    let firstPlayerDupe = playerInputDupes[0];
-    let secondPlayerDupe = playerInputDupes[1];
-    // let thirdPlayerDupe = playerInputDupes[2];
+//     //find & store indexes of second duplicate letter in Wordle (RARE)
+//     let secondWordleDupeIndices = getDupeIndex(todaysWordleArr, secondWordleDupe)
 
 
-    // let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
-    // let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+//     //Get the duplicate letters entered by player - store as array
+//     let playerInputDupes = getDupes(inputArr);
 
-//NOTE: IS POSSIBLE FOR 3 OF THE SAME LETTER TO COME UP - NOT ACCOUNTED FOR YET
-    //check if firstPlayer Indices or secondPlayerIndices are 3 in length
-
-    // if (playerInputDupes.length == 0) {
-    //     console.log('no duplicates in player input')
-    // } else if (playerInputDupes.length == 1) {
-    //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
-    //     console.log(`1 duplicate letter in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots`)
-    // } else if (playerInputDupes.length == 2) {
-    //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
-    //     let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
-    //     console.log(`2 duplicate letters in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots as well as ${secondPlayerDupe} located at ${secondPlayerDupeIndices[0]} & ${secondPlayerDupeIndices[1]} spots`)
-    // }
-
-console.log(playerInputDupes)
+//         //Store the player input dupes so that they can be passed into the indice fn
+//     let firstPlayerDupe = playerInputDupes[0];
+//     let secondPlayerDupe = playerInputDupes[1];
+//     // let thirdPlayerDupe = playerInputDupes[2];
 
 
-    if (playerInputDupes.length == 0) {
-        console.log('no duplicates in player input')
-    } else if (playerInputDupes.length == 1) {
-        console.log('1 duplicate in input')
-        wordleDupeCounter++
-        let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
-        if (todaysWordleDupes.length == 1) {
-            console.log('1 duplicate in input AND Wordle')
-            if (firstPlayerDupe == firstWordleDupe) {
-                for (let index in firstPlayerDupeIndices) {
-                    if (firstPlayerDupeIndices[index] == firstWordleDupeIndices[index]) {
-                        //color that one green
-                        if (firstPlayerDupeIndices[index] == firstPlayerDupeIndices[0]) {
-                            console.log(`color ${firstPlayerDupeIndices[index]} green, color ${firstPlayerDupeIndices[1]} grey`)
-                        } else if (firstPlayerDupeIndices[index] == firstPlayerDupeIndices[1]) {
-                            console.log(`color ${firstPlayerDupeIndices[index]} green, color ${firstPlayerDupeIndices[0]} grey`)
-                        }
-                    } else if (firstPlayerDupeIndices[index] != firstWordleDupeIndices[index]) {
-                        console.log(`color ${firstPlayerDupeIndices[0]} yellow, color  ${firstPlayerDupeIndices[1]} grey`)
-                    }
-                }
-            } else if (firstPlayerDupe != firstWordleDupe) {
-                console.log(`dupe in wordle ${firstWordleDupe} and input ${firstPlayerDupe} but different letters`)
+//     // let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+//     // let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+
+// //NOTE: IS POSSIBLE FOR 3 OF THE SAME LETTER TO COME UP - NOT ACCOUNTED FOR YET
+//     //check if firstPlayer Indices or secondPlayerIndices are 3 in length
+
+//     // if (playerInputDupes.length == 0) {
+//     //     console.log('no duplicates in player input')
+//     // } else if (playerInputDupes.length == 1) {
+//     //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+//     //     console.log(`1 duplicate letter in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots`)
+//     // } else if (playerInputDupes.length == 2) {
+//     //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+//     //     let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+//     //     console.log(`2 duplicate letters in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots as well as ${secondPlayerDupe} located at ${secondPlayerDupeIndices[0]} & ${secondPlayerDupeIndices[1]} spots`)
+//     // }
+
+// console.log(playerInputDupes)
+
+
+//     if (playerInputDupes.length == 0) {
+//         console.log('no duplicates in player input')
+//     } else if (playerInputDupes.length == 1) {
+//         console.log('1 duplicate in input')
+//         wordleDupeCounter++
+//         let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+//         if (todaysWordleDupes.length == 1) {
+//             console.log('1 duplicate in input AND Wordle')
+//             // if (firstPlayerDupe == firstWordleDupe) {
+//             //     for (let index in firstPlayerDupeIndices) {
+//             //         if (firstPlayerDupeIndices[index] == firstWordleDupeIndices[index]) {
+//             //             //color that one green
+//             //             if (firstPlayerDupeIndices[index] == firstPlayerDupeIndices[0]) {
+//             //                 console.log(`color ${firstPlayerDupeIndices[index]} green, color ${firstPlayerDupeIndices[1]} grey`)
+//             //             } else if (firstPlayerDupeIndices[index] == firstPlayerDupeIndices[1]) {
+//             //                 console.log(`color ${firstPlayerDupeIndices[index]} green, color ${firstPlayerDupeIndices[0]} grey`)
+//             //             }
+//             //         } else if (firstPlayerDupeIndices[index] != firstWordleDupeIndices[index]) {
+//             //             console.log(`color ${firstPlayerDupeIndices[0]} yellow, color  ${firstPlayerDupeIndices[1]} grey`)
+//             //         }
+//             //     }
+//             // } else if (firstPlayerDupe != firstWordleDupe) {
+//             //     console.log(`dupe in wordle ${firstWordleDupe} and input ${firstPlayerDupe} but different letters`)
 
          
-            }
-        } else if (todaysWordleDupes.length == 0) {
-            console.log('1 duplicate in input BUT NOT Wordle')
-            for (let thisInput in inputArr) {
-                let idVar = `letter${rowCounter}${thisInput}`
-                if (!inputArr[thisInput].includes(firstPlayerDupe)) {
-                    continue
+//             // }
+//         } else if (todaysWordleDupes.length == 0) {
+//             console.log('1 duplicate in input BUT NOT Wordle')
+//             for (let thisInput in inputArr) {
+//                 let idVar = `letter${rowCounter}${thisInput}`
+//                 if (!inputArr[thisInput].includes(firstPlayerDupe)) {
+//                     continue
                 
-                    // for (let index of firstPlayerDupeIndices) {
+//                     // for (let index of firstPlayerDupeIndices) {
 
-                    // }
+//                     // }
 
-                    // console.log(idVar)
-                    // console.log(inputArr[thisInput])
-                } else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
-                    let thisDiv = document.getElementById(idVar)
-                    thisDiv.classList.add('green')
-                    console.log(`added green to dupe ${firstPlayerDupe}`)
-                    return playerInputDupes
-                } else if (todaysWordleArr.includes(inputArr[thisInput])) {
-                    let thisDiv = document.getElementById(idVar)
-                    thisDiv.classList.add('yellow')
-                    console.log(`added yellow to dupe ${firstPlayerDupe}`)
-                    return playerInputDupes
-                } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
-                    let thisDiv = document.getElementById(idVar)
-                    // thisDiv.classList.add(`added grey to dupe ${firstPlayerDupe}`)
-                    console.log(`added grey to dupe ${firstPlayerDupe}`)
-                    return playerInputDupes
-                }
+//                     // console.log(idVar)
+//                     // console.log(inputArr[thisInput])
+//                 } else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+//                     let thisDiv = document.getElementById(idVar)
+//                     thisDiv.classList.add('green')
+//                     console.log(`added green to dupe ${firstPlayerDupe}`)
+//                     return playerInputDupes
+//                 } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+//                     let thisDiv = document.getElementById(idVar)
+//                     thisDiv.classList.add('yellow')
+//                     console.log(`added yellow to dupe ${firstPlayerDupe}`)
+//                     return playerInputDupes
+//                 } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+//                     let thisDiv = document.getElementById(idVar)
+//                     // thisDiv.classList.add(`added grey to dupe ${firstPlayerDupe}`)
+//                     console.log(`added grey to dupe ${firstPlayerDupe}`)
+//                     return playerInputDupes
+//                 }
 
-                console.log(`dupe in input ${firstPlayerDupe} but not in wordle`)
-            }
+//                 console.log(`dupe in input ${firstPlayerDupe} but not in wordle`)
+//             }
      
             
                 
-            }
+//             }
                 
-    } else if (playerInputDupes.length == 2) {
+//         }
+//         else if (playerInputDupes.length == 2) {
        
         
-        // CURRENTLY BROKEN
-        // let idVar = `letter${rowCounter}${thisInput}`
+//     //     // CURRENTLY BROKEN
+//     //     // let idVar = `letter${rowCounter}${thisInput}`
 
-        // let thisDiv = document.getElementById(idVar)
+//     //     // let thisDiv = document.getElementById(idVar)
       
-        // let inputDupeOneDiv = 
+//     //     // let inputDupeOneDiv = 
 
-        // while (!(playerInputDupes[1].classList.contains('yellow')) || !(playerInputDupes[1].classList.contains('green'))) {
+//     //     // while (!(playerInputDupes[1].classList.contains('yellow')) || !(playerInputDupes[1].classList.contains('green'))) {
 
-        console.log('2 duplicates in input BUT None in Wordle')
-        for (let thisInput in inputArr) {
-            let idVar = `letter${rowCounter}${thisInput}`
-            // let thisDiv = document.getElementById(idVar)
+//     //     console.log('2 duplicates in input BUT None in Wordle')
+//     //     for (let thisInput in inputArr) {
+//     //         let idVar = `letter${rowCounter}${thisInput}`
+//     //         // let thisDiv = document.getElementById(idVar)
             
-            if (!inputArr[thisInput].includes(firstPlayerDupe) && !inputArr[thisInput].includes(secondPlayerDupe)) {
-                continue
+//     //         if (!inputArr[thisInput].includes(firstPlayerDupe) && !inputArr[thisInput].includes(secondPlayerDupe)) {
+//     //             continue
             
-                // for (let index of firstPlayerDupeIndices) {
+//     //             // for (let index of firstPlayerDupeIndices) {
 
-                // }
+//     //             // }
 
-                // console.log(idVar)
-                // console.log(inputArr[thisInput])
-            } else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
-                let thisDiv = document.getElementById(idVar)
-                thisDiv.classList.add('green')
-                return playerInputDupes
-            } else if (todaysWordleArr.includes(inputArr[thisInput])) {
-                let thisDiv = document.getElementById(idVar)
-                thisDiv.classList.add('yellow')
-                return playerInputDupes
-            } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
-                let thisDiv = document.getElementById(idVar)
-                thisDiv.classList.add('grey')
-                return playerInputDupes
-            }
+//     //             // console.log(idVar)
+//     //             // console.log(inputArr[thisInput])
+//     //         } else if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+//     //             let thisDiv = document.getElementById(idVar)
+//     //             thisDiv.classList.add('green')
+//     //             return playerInputDupes
+//     //         } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+//     //             let thisDiv = document.getElementById(idVar)
+//     //             thisDiv.classList.add('yellow')
+//     //             return playerInputDupes
+//     //         } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+//     //             let thisDiv = document.getElementById(idVar)
+//     //             thisDiv.classList.add('grey')
+//     //             return playerInputDupes
+//     //         }
 
-            console.log(`dupe in input ${firstPlayerDupe} but not in wordle`)
-        }
+//     //         console.log(`dupe in input ${firstPlayerDupe} but not in wordle`)
+//     //     }
  
-    // }
+//     // // }
             
-        }
+//     //     }
 
 
-                   //    for (let thisInput in inputArr) {
-                //        let idVar = `letter${rowCounter}${thisInput}`
-                //        console.log(idVar)
-                //        console.log(inputArr[thisInput])
-                //     if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
-                //         let thisDiv = document.getElementById(idVar)
-                //         thisDiv.classList.add('green')
-                //         return
-                //     } else if (todaysWordleArr.includes(inputArr[thisInput])) {
-                //         let thisDiv = document.getElementById(idVar)
-                //         thisDiv.classList.add('yellow')
-                //         return
-                //     } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
-                //         let thisDiv = document.getElementById(idVar)
-                //         thisDiv.classList.add('grey')
-                //         return
-                //     }
+//                    //    for (let thisInput in inputArr) {
+//                 //        let idVar = `letter${rowCounter}${thisInput}`
+//                 //        console.log(idVar)
+//                 //        console.log(inputArr[thisInput])
+//                 //     if (inputArr[thisInput] === todaysWordleArr[thisInput]) {
+//                 //         let thisDiv = document.getElementById(idVar)
+//                 //         thisDiv.classList.add('green')
+//                 //         return
+//                 //     } else if (todaysWordleArr.includes(inputArr[thisInput])) {
+//                 //         let thisDiv = document.getElementById(idVar)
+//                 //         thisDiv.classList.add('yellow')
+//                 //         return
+//                 //     } else if (!(todaysWordleArr.includes(inputArr[thisInput]))) {
+//                 //         let thisDiv = document.getElementById(idVar)
+//                 //         thisDiv.classList.add('grey')
+//                 //         return
+//                 //     }
 
 
-            // else if (dupes arent the same letter)
-        // if (firstPlayerDupe == firstWordleDupe || firstPlayerDupe == secondWordleDupe) {
-        //     for (let index in firstPlayerDupeIndices){
-        //         if (firstPlayerDupeIndices[index] == firstWordleDupeIndices[index]) {
-        //             //color that one green
-        //             console.log(`color ${firstPlayerDupeIndices[index]}`)
-        //         }
-        //     }
-        // console.log(`1 duplicate letter in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots`)
-    // } 
-
-
-
+//             // else if (dupes arent the same letter)
+//         // if (firstPlayerDupe == firstWordleDupe || firstPlayerDupe == secondWordleDupe) {
+//         //     for (let index in firstPlayerDupeIndices){
+//         //         if (firstPlayerDupeIndices[index] == firstWordleDupeIndices[index]) {
+//         //             //color that one green
+//         //             console.log(`color ${firstPlayerDupeIndices[index]}`)
+//         //         }
+//         //     }
+//         // console.log(`1 duplicate letter in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots`)
+//     // } 
 
 
 
-    // else if (playerInputDupes.length == 2) {
-    //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
-    //     let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
-    //     console.log(`2 duplicate letters in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots as well as ${secondPlayerDupe} located at ${secondPlayerDupeIndices[0]} & ${secondPlayerDupeIndices[1]} spots`)
-    // }
 
 
-    // for (index of )
+
+//     // else if (playerInputDupes.length == 2) {
+//     //     let firstPlayerDupeIndices = getDupeIndex(inputArr, firstPlayerDupe)
+//     //     let secondPlayerDupeIndices = getDupeIndex(inputArr, secondPlayerDupe)
+//     //     console.log(`2 duplicate letters in input: ${firstPlayerDupe} located at ${firstPlayerDupeIndices[0]} & ${firstPlayerDupeIndices[1]} spots as well as ${secondPlayerDupe} located at ${secondPlayerDupeIndices[0]} & ${secondPlayerDupeIndices[1]} spots`)
+//     }
 
 
-    console.log(inputArr)
+//     // for (index of )
 
-    //duplicate letters entered (in array form)
-    console.log(playerInputDupes)
+
+//     console.log(inputArr)
+
+//     //duplicate letters entered (in array form)
+//     console.log(playerInputDupes)
     
-    //Check the indexes of the first duplicate player input letter (most Wordles will only have one)
-    console.log(getDupeIndex(inputArr, firstPlayerDupe))
+//     //Check the indexes of the first duplicate player input letter (most Wordles will only have one)
+//     console.log(getDupeIndex(inputArr, firstPlayerDupe))
 
-    //Check the indexes of the second duplicate plater input letter
-    console.log(getDupeIndex(inputArr, secondPlayerDupe))
+//     //Check the indexes of the second duplicate plater input letter
+//     console.log(getDupeIndex(inputArr, secondPlayerDupe))
 
-}
+// }
+
+
+//END OF FIRST DUPE ATTEMPT
+
 
 
 //Append the word to test
@@ -1133,7 +1611,3 @@ cheatButton.addEventListener('click', () => {
 //     }
 
 // };
-
-
-
-
