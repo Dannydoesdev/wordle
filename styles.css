@@ -200,11 +200,15 @@ header {
 }
 
 @keyframes pulse-grey {
-    from {
-        box-shadow: 80px 80px 80px #808080b8;
+    
+    0% {
+        box-shadow: 40px 40px 40px #808080b8;
     }
+    /* from {
+        box-shadow: 80px 80px 80px #808080b8;
+    } */
   
-    to {
+    100% {
 
         box-shadow: 80px 80px 80px #808080b8;
     }
@@ -229,8 +233,15 @@ header {
         box-shadow: 80px 80px 80px #ffff009c;
     }
     100% {
-        box-shadow: 7px 7px 10px #ffff0061;
+        box-shadow: 16px 16px 16px #a8a81380;
     }
+   
+    /* 0% {
+        box-shadow: 80px 80px 80px #ffff009c;
+    }
+    100% {
+        box-shadow: 7px 7px 10px #ffff0061; 
+    } */
   }
 
   .green {
@@ -250,13 +261,23 @@ header {
 
 
 @keyframes pulse-green {
-    from {
+    0% {
+        box-shadow: 20px 20px 20px #229322bf;
+    }
+    /* 0% {
+        box-shadow: 20px 20px 20px #1d8b1dbf;
+    } */
+    
+    100% {
+        box-shadow: 80px 80px 80px #0da10d;
+    }
+    /* from {
         box-shadow: 80px 80px 80px #008000a1;
     }
 
     to {
         box-shadow: 80px 80px 80px #008000a3;
-    }
+    } */
   }
 
 .hide {

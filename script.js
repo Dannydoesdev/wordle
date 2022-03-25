@@ -66,7 +66,7 @@
 let savedScore
 let savedStreak
 
-//If no wincounter in local storage, set one to '0'
+//If no wincounter in local storage, create set one and set to '0'
 if (!(localStorage.getItem('winCounter'))) {
     console.log('no storage variable for winCounter - setting up and assigning savedScore variable next:')
     localStorage.setItem('winCounter', 0);
@@ -116,6 +116,9 @@ console.log(`${savedStreak}`)
 
 console.log(localStorage.getItem('winStreak'))
 
+console.log(`Console tests for localStorage above - can ignore unless there are errors`)
+console.log(`Type "todaysWordleArr" in console if you want to cheat!`)
+
 //Global 'row counter' to allow parsing through input obj & selecting correct divs etc
 let rowCounter = 1;
 
@@ -158,8 +161,8 @@ function timedMode() {
     let count = 90000
     countDownTimer = setInterval(function () {
         count = count - 1000
-        console.log(count)
-        console.log(`${count / 1000} seconds left`)
+        // console.log(count)
+        // console.log(`${count / 1000} seconds left`)
         timedButton.textContent = `${count / 1000} seconds left`;
         if (count / 1000 >= 60) {
             timedButton.style.color = 'green'
@@ -197,8 +200,8 @@ function speedMode() {
     let count = 30000
     countDownTimer = setInterval(function () {
         count = count - 1000
-        console.log(count)
-        console.log(`${count / 1000} seconds left`)
+        // console.log(count)
+        // console.log(`${count / 1000} seconds left`)
         speedButton.textContent = `${count / 1000} seconds left`;
         if (count / 1000 >= 20) {
             speedButton.style.color = 'green'
@@ -608,8 +611,8 @@ function submitGuess() {
     inputObj[arrName] = []
 }
 
-//Just a general console log for the current Wordle
-console.log(todaysWordleArr)
+//Just a general console log for the current Wordle - removing for release
+// console.log(todaysWordleArr)
 
 //loseGame function similar to 'endGame' fn - except streaks get reset
 function loseGame() {
@@ -737,15 +740,17 @@ function endGame() {
 
 
 //'cheat button' code to allow player to view Wordle (mainly for testing but have left in for now)
-const cheatButton = document.getElementById('cheat');
-const output = document.getElementById('output');
-let newH = document.createElement('h2');
-newH.classList.add('no-opacity');
-newH.innerHTML= capitaliseThis(randomWord);
-output.appendChild(newH);
-cheatButton.addEventListener('click', () => {
-        newH.classList.toggle('full-opacity');
-    })
+//Removing chear mode for launch
+
+// const cheatButton = document.getElementById('cheat');
+// const output = document.getElementById('output');
+// let newH = document.createElement('h2');
+// newH.classList.add('no-opacity');
+// newH.innerHTML= capitaliseThis(randomWord);
+// output.appendChild(newH);
+// cheatButton.addEventListener('click', () => {
+//         newH.classList.toggle('full-opacity');
+//     })
 
 
 //END CODE
