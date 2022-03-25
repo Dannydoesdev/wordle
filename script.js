@@ -329,7 +329,7 @@ player.winningWordle = new Array()
 
 //giving the code existence of 'savedScore' outside initialisation (maybe better ways?)
 let savedScore
-
+let savedStreak
 
 //If no wincounter in local storage, set one to '0'
 if (!(localStorage.getItem('winCounter'))) {
@@ -352,6 +352,19 @@ console.log(`log savedScore outside initalisation loop`)
 console.log(savedScore)
 
 
+if (!(localStorage.getItem('winStreak'))) {
+    console.log('no storage variable for winStreak- setting up and assigning savedStreak variable next:')
+    localStorage.setItem('winStreak', 0);
+    savedStreak = parseInt(localStorage.getItem('winStreak'))
+    console.log(`log savedStreak just after setting`)
+    console.log(savedStreak)
+} else {
+    // savedScore = (localStorage.getItem('winCounter'))
+    console.log('storage variable for winStreak found - assigning to savedStreak var next:')
+    savedStreak = parseInt(localStorage.getItem('winStreak'))
+    console.log(`log savedStreak just after getting`)
+    console.log(savedStreak)
+}
 
 
 // savedScore++
@@ -373,12 +386,21 @@ console.log(savedScore)
 //     console.log('wincounter is 0')   
 // }
 
-let showWinStreak = document.getElementById('winstreak')
-showWinStreak.innerText = `Your lifetime score = ${savedScore}`
+let showWinCounter = document.getElementById('win-counter')
+showWinCounter.innerText = `Your lifetime score = ${savedScore}`
 
 console.log(`${savedScore}`)
 
 console.log(localStorage.getItem('winCounter'))
+
+
+let showWinStreak = document.getElementById('win-streak')
+showWinStreak.innerText = `Your win streak = ${savedStreak}`
+
+console.log(`${savedStreak}`)
+
+console.log(localStorage.getItem('winStreak'))
+
 // console.log(typeof localStorage.getItem('winCounter'))
 
 let rowCounter = 1;
@@ -401,9 +423,14 @@ let arrName = `newArr${rowCounter}`;
 inputObj[arrName] = [];
 
 const timedButton = document.getElementById('timed-button')
+
+const speedButton = document.getElementById('speed-button')
+
 // const instructionsDiv = document.getElementById('instructions-div')
 
 timedButton.addEventListener('click', timedMode)
+
+speedButton.addEventListener('click', speedMode)
 
 // function showInstructions() {
 //     instructionsDiv.classList.toggle('full-opacity')
@@ -416,9 +443,10 @@ let countDown
 let countDownTimer
 
 function timedMode() {
-    
+    speedButton.removeEventListener('click', speedMode)
     // let displayCount = document.createElement('h4')
-
+    timedButton.removeEventListener('click', timedMode)
+    
     let count = 90000
     countDownTimer = setInterval(function () {
         count = count - 1000
@@ -427,10 +455,16 @@ function timedMode() {
         timedButton.textContent = `${count / 1000} seconds left`;
         if (count / 1000 >= 60) {
             timedButton.style.color = 'green'
+            timedButton.style.fontWeight = '550'
         } else if (count / 1000 <= 59 && count / 1000 >= 30) {
             timedButton.style.color = 'yellow'
+            timedButton.style.fontWeight = '700'
+            timedButton.style.fontSize = '11pt'
         } else if (count / 1000 <= 29 && count / 1000 >= 0) {
             timedButton.style.color = 'red'
+            timedButton.style.fontSize = '12pt'
+            timedButton.style.fontWeight = '1000'
+            timedButton.style.backgroundColor = 'white'
         }
 }, 1000)
     countDown = setTimeout(lostTimed, 90000)
@@ -447,6 +481,47 @@ function timedMode() {
     // return countDown
 }
 
+
+function speedMode() {
+    timedButton.removeEventListener('click', timedMode)
+    // let displayCount = document.createElement('h4')
+    speedButton.removeEventListener('click', speedMode)
+
+    let count = 30000
+    countDownTimer = setInterval(function () {
+        count = count - 1000
+        console.log(count)
+        console.log(`${count / 1000} seconds left`)
+        speedButton.textContent = `${count / 1000} seconds left`;
+        if (count / 1000 >= 20) {
+            speedButton.style.color = 'green'
+            speedButton.style.fontWeight = '550'
+        } else if (count / 1000 <= 19 && count / 1000 >= 10) {
+            speedButton.style.color = 'yellow'
+            speedButton.style.fontWeight = '700'
+            speedButton.style.fontSize = '11pt'
+        } else if (count / 1000 <= 9 && count / 1000 >= 0) {
+            speedButton.style.color = 'red'
+            speedButton.style.fontSize = '12pt'
+            speedButton.style.fontWeight = '1000'
+            speedButton.style.backgroundColor = 'white'
+        }
+}, 1000)
+    countDown = setTimeout(lostTimed, 30000)
+        // 3000)
+        // 90000)
+
+    if (rowCounter == 8) {
+        clearInterval(countDownTimer)
+        clearTimeout(countDown)
+        endGame()
+    }
+
+    // console.log(countDown)
+    // return countDown
+}
+
+
 // function wonTimed() {
 //     const countDown = timedMode()
 //     console.log(countDown)
@@ -454,8 +529,12 @@ function timedMode() {
 // }
 
 function lostTimed() {
-    alert('Sorry, you lost this one! Refresh to play again')
+
+    clearTimeout(countDown)
+    clearInterval(countDownTimer)
+    loseGame()
     return
+
 }
 
 
@@ -834,17 +913,95 @@ function submitGuess() {
     //Set lost condition
 
     if (rowCounter == 7) {
-        alert('Sorry, you lost this one! Refresh to play again')
+
+        clearTimeout(countDown)
+        clearInterval(countDownTimer)
+        loseGame()
+        return
+  
     }
+    
+
     // console.log('row count' + rowCounter)
     // input.value = ''
     let arrName = `newArr${rowCounter}`;
-    inputObj[arrName] = [];
-
+    inputObj[arrName] = []
 }
 
 //Just a general console log for the current Wordle
 console.log(todaysWordleArr)
+
+function loseGame() {
+    //Reset Saved Streak
+    savedStreak = 0
+
+    console.log(`log savedStreak just before resetting`)
+    console.log(savedStreak)
+
+    console.log(`log local storage just before resetting`)
+    console.log(localStorage.getItem('winStreak'))
+
+    //Save this back to the localStorage
+    localStorage.setItem('winStreak', savedStreak)
+
+    console.log(`${savedStreak}`)
+
+    console.log(localStorage.getItem('winStreak'))
+
+    showWinStreak.innerText = `Your current streak = ${savedStreak}`
+
+    document.body.removeEventListener('keyup', checkInput);
+    document.body.removeEventListener('keyup', checkForSubmit);
+    document.body.removeEventListener('keyup', checkForSubmit);
+    console.log('youve entered the lose game');
+    // const finalScreen = document.getElementById('endgame');
+    const finalScreen = document.querySelector('.losegame');
+    console.log(`finalScren:`)
+    console.log(finalScreen)
+    // finalScreen.style.display = 'block';
+    finalScreen.id = 'losegame-display'
+
+    let todaysWordleStr = capitaliseThis(todaysWordleArr.join(''))
+
+    const loseGameContent = document.getElementById('losegame-content');
+
+    // let newH = document.createElement('h4');
+    // newH.textContent = `You won los ${guessTracker} guesses, nice work!`
+    // loseGameContent.appendChild(newH)
+
+    const showWinningWord = document.getElementById('losing-word')
+    showWinningWord.classList.add('losing-word')
+    showWinningWord.textContent = `${todaysWordleStr}`
+
+    const header = document.querySelector('header')
+    header.style.opacity = '60%';
+
+    // document.body.style.opacity ='60%'
+
+    let newH2 = document.createElement('h4');
+    newH2.textContent = `Your current win score is ${savedScore}`
+
+    loseGameContent.appendChild(newH2)
+
+    let newH3 = document.createElement('h4');
+    newH3.textContent = `Your current win streak is ${savedStreak}`
+
+    loseGameContent.appendChild(newH3)
+
+    let allDivs = document.querySelectorAll('div')
+    for (thisDiv of allDivs) {
+        thisDiv.style.opacity = '60%';
+    }
+
+    const newGameButton = document.getElementById('lose-new-game');
+    newGameButton.addEventListener('click', function () {
+        window.location.reload();
+    })
+
+
+    // alert('Sorry, you lost this one! Refresh to play again')
+}
+
 
 
 function endGame() {
@@ -869,9 +1026,25 @@ function endGame() {
     console.log(`log local storage just after updating ++`)
     console.log(localStorage.getItem('winCounter'))
 
-    showWinStreak.innerText = `Your lifetime score = ${savedScore}`
+    showWinCounter.innerText = `Your lifetime score = ${savedScore}`
 
+    //Add 1 to the localstorage winstreak variable
+    savedStreak++
 
+    console.log(`log savedStreak just before resettin`)
+    console.log(savedStreak)
+
+    console.log(`log local storage just before resetting`)
+    console.log(localStorage.getItem('winStreak'))
+
+    //Save this back to the localStorage
+    localStorage.setItem('winStreak', savedStreak)
+
+    console.log(`${savedStreak}`)
+
+    console.log(localStorage.getItem('winStreak'))
+
+    showWinStreak.innerText = `Your current streak = ${savedStreak}`
 
     document.body.removeEventListener('keyup', checkInput);
     document.body.removeEventListener('keyup', checkForSubmit);
@@ -903,6 +1076,16 @@ function endGame() {
     newH2.textContent = `Your current win score is ${savedScore}`
 
     endgameContent.appendChild(newH2)
+
+    let newH3 = document.createElement('h4');
+    newH3.textContent = `Your current win streak is ${savedStreak}`
+
+    endgameContent.appendChild(newH3)
+
+    let allDivs = document.querySelectorAll('div')
+    for (thisDiv of allDivs) {
+        thisDiv.style.opacity = '60%';
+    }
 
     const newGameButton = document.getElementById('newgame');
     newGameButton.addEventListener('click', function () {

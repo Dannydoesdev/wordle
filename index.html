@@ -14,18 +14,24 @@
 
 <header>
     <h1>Welcome to Simp(d)le - Wordle done simple</h1>
-    <div id = top-level-info>
-    <h4 id="winstreak">Test</h4>
-    <button id="instructions-button">Instructions</button>
-    <button id="timed-button">Timed mode</button>
+    <div id="top-level-info">
+    <div id="win-info">
+    <h4 id="win-counter">Test</h4>
+    <h4 id="win-streak">Test</h4>
     </div>
-    <div id = "instructions-div" class="no-opacity">
+    <div id="top-buttons">
+        <button id="instructions-button">Instructions</button>
+    <button id="timed-button">Timed mode (90s)</button>
+    <button id="speed-button">Lightning mode (30s)</button>
+    </div>
+    </div>
+    <aside id = "instructions-div" class="no-opacity">
     <h5>Start typing to guess - hit enter to submit. Simple</h5>
     <h5 id="green">Green = right letter right spot</h5>
     <h5 id="yellow">Yellow = letter is in the Wordle but in a different spot</h5>
     <h5 id="grey">Grey = letter is not in the Wordle</h5>
     <h5>You can refresh the page for a new Wordle</h5>
-</div>
+    </aside>
 </header>
 
 <section id="unused-letters">
@@ -95,14 +101,23 @@
     </div>
 
 
-    <div class='endgame'>
+    <aside class='endgame'>
         <h1>Congratulations - you guessed the Simp(d)le!</h1>
-        <div id="endgame-content">
-            <h3>Your winning word was</h3>
+        <aside id="endgame-content">
+            <h3>The Wordle was:</h3>
             <h3 id="winning-word"></span>
-        </div>
+            </aside>
         <button id="newgame">Play again</button>
-    </div>
+    </aside>
+
+    <aside class='losegame'>
+        <h1>Sorry - you lost this round</h1>
+        <aside id="losegame-content">
+            <h3>The winning word was</h3>
+            <h3 id="losing-word"></span>
+            </aside>
+        <button id="lose-new-game">Play again</button>
+    </aside>
 
 </section>
 

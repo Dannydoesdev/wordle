@@ -20,7 +20,6 @@ header {
     transition-timing-function: ease-in;
 }
 
-
 #unused-letters {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -38,6 +37,9 @@ height: 50px;
 width: 55px;
 margin: 0px 3px;
 line-height: 50px;  
+
+
+box-sizing: border-box;
 
   /* height: 40px;
   margin: 0px 3px;
@@ -66,8 +68,6 @@ line-height: 50px;
     grid-column-end: 4 ;
 }
 
-
-
 #used-letters {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -85,6 +85,9 @@ height: 50px;
     width: 55px;
     margin: 0px 3px;
     line-height: 50px;  
+
+
+    box-sizing: border-box;
 
 /* height: 40px;
   margin: 0px 3px;
@@ -136,13 +139,28 @@ height: 50px;
 
 }
 
-
 #timed-button{
-    margin-left: 100px;
     background-color: black;
     color: white;
     width: 150px;
     height: 35px;
+
+    animation-duration: 4s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+#speed-button{
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 35px;
+    animation-duration: 2s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 
@@ -152,6 +170,11 @@ height: 50px;
     /* border: 2px solid white; */
     width: 150px;
     height: 35px;
+
+    animation-duration: 8s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #instructions-div {
@@ -215,66 +238,29 @@ height: 50px;
         /* box-shadow: -16px -16px 10px white; */
         /* box-shadow: -8px -8px 8px white; */
 
-        box-shadow: -8px 8px 8px white;
+        /* box-shadow: -8px 8px 8px white; */
+        box-shadow: -8px 8px 8px #ffffff82;
+
+        
     }
   
     to {
         /* box-shadow: 7px 7px 10px white; */ 
         /* box-shadow: 10px 10px 10px white; */
-        
-        box-shadow: 8px 8px 14px #ffffff82;
+        /* box-shadow: 8px 8px 14px white; */
+        /* box-shadow: 8px 8px 14px white; */
+
+        box-shadow: 8px 8px 14px #ffffffdb;
+
     }
   }
 
-.green {
-    background-color: green;
-    border: 2px solid white;
-    animation-duration: 8s;
-    animation-name: pulse-green;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    box-shadow: 16px 16px 10px green;
 
-    /* transform: rotate(360deg); */
-}
 
-@keyframes pulse-green {
-    from {
-        box-shadow: 80px 80px 80px green;
-    }
-
-  
-    to {
-        box-shadow: 7px 7px 10px green;
-    }
-  }
-
-.yellow {
-    background-color: rgb(201, 201, 32);
-    border: 1px solid white;
-
-    animation-duration: 8s;
-    animation-name: pulse-yellow;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    box-shadow: 16px 16px 10px yellow;
-
-    /* transform: rotate(360deg); */
-}
-
-@keyframes pulse-yellow {
-    from {
-        box-shadow: 80px 80px 80px yellow;
-    }
-
-  
-    to {
-        box-shadow: 7px 7px 10px yellow;
-    }
-  }
 
 .grey {
-    background-color: grey;
+    /* background-color: grey; */
+    background-color: #7c7878d6;
     animation-duration: 8s;
     animation-name: pulse-grey;
     animation-iteration-count: infinite;
@@ -288,12 +274,85 @@ height: 50px;
 
 @keyframes pulse-grey {
     from {
-        box-shadow: 80px 80px 80px grey;
+        /* box-shadow: 80px 80px 80px grey; */
+        box-shadow: 80px 80px 80px #808080b8;
     }
 
   
     to {
-        box-shadow: 7px 7px 10px grey;
+        /* box-shadow: 7px 7px 10px grey; */
+        box-shadow: 80px 80px 80px #808080b8;
+    }
+  }
+
+  .yellow {
+    /* background-color: rgb(201, 201, 32); */
+
+    background-color: rgb(255 255 0 / 72%);
+    border: 1px solid white;
+
+    animation-duration: 8s;
+    animation-name: pulse-yellow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px yellow;
+/* 
+    padding: 9px; */
+    /* transform: rotate(360deg); */
+}
+
+.letters .green {
+    padding: 9px;
+}
+
+@keyframes pulse-yellow {
+    /* from {
+        box-shadow: 80px 80px 80px yellow;
+    } */
+    0% {
+        box-shadow: 80px 80px 80px #ffff009c;
+    }
+    100% {
+        box-shadow: 7px 7px 10px #ffff0061;
+    }
+/*   
+    to {
+        box-shadow: 7px 7px 10px yellow;
+    } */
+  }
+
+  .green {
+    /* background-color: green; */
+    background-color: #218e21d4;
+
+    border: 2px solid white;
+    animation-duration: 8s;
+    /* padding: 8px; */
+    
+    animation-name: pulse-green;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    box-shadow: 16px 16px 10px green;
+
+    /* transform: rotate(360deg); */
+}
+
+.letters .green {
+    padding: 8px;
+}
+
+
+
+@keyframes pulse-green {
+    from {
+        /* box-shadow: 80px 80px 80px green; */
+        box-shadow: 80px 80px 80px #008000a1;
+    }
+
+  
+    to {
+        /* box-shadow: 7px 7px 10px green; */
+        box-shadow: 80px 80px 80px #008000a3;
     }
   }
 
@@ -324,14 +383,36 @@ height: 50px;
 }
 
 
+#lose-new-game {
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+    margin: 20px;
+    width: 202px;
+    height: 47px;
+    animation-duration: 6s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+}
+
 /* End game screen button */
 #newgame {
     background-color: black;
     color: white;
-    border: 2px solid white;
-    width: 150px;
-    height: 35px;
+    border: 3px solid white;
+    margin: 20px;
+    width: 202px;
+    height: 47px;
+    animation-duration: 6s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
 }
+
+
 
 /* button {
     background-color: black;
@@ -413,17 +494,80 @@ height: 50px;
     align-items: center;
     opacity: 95%;
     height: 95%;
-    line-height: 60px;
+    margin-top: -60px;
+    line-height: 55px;
     transition-property: all;
     transition-duration: 3s;
     transition-timing-function: ease-in;
 
 }
 
+#win-info {
+    display: flex;
+    justify-content: center;
+    gap: 122px;
+}
+
+#win-streak {
+    margin-left: -18px;
+}
+
+#top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 136px;
+}
+
+.losing-word {
+
+    color: green;
+    font-size: 26pt;
+    border-style: none;
+    border-radius: 17px;
+    animation-duration: 4s;
+    animation-name: pulse-green;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
+    /* box-shadow: 6px 6px 70px green; */
+    box-shadow: 6px 6px 500px 0px #259625d1;
+    padding: 14px 100px;
+    /* transition-property: all;
+    transition-duration: 30s;
+    transition-timing-function: ease-in; */
+
+}
+
 .winning-word {
     color: green;
     font-size: 26pt;
+    border-radius: 17px;
+    animation-duration: 4s;
+    animation-name: pulse-green;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
+
+
+/* 
+.winning-word {
+
+    color: green;
+    font-size: 26pt;
+    border-style: none;
+    border-radius: 17px;
+    animation-duration: 4s;
+    animation-name: pulse-green;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
+    box-shadow: 6px 6px 70px green; - double commented
+    box-shadow: 6px 6px 500px 0px #259625d1;
+    padding: 14px 100px;
+    transition-property: all;
+    transition-duration: 30s;
+    transition-timing-function: ease-in;
+
+}
+*/
 
 /* .unused-letters {
     height: 20px;
@@ -434,14 +578,84 @@ height: 50px;
     display: flex;
   } */
 
-  #green {
-      color: green
-  }
+/* 
+  .losing-word {
+    color: green;
+    font-size: 26pt;
+    border-style: none;
+    border-radius: 17px;
+    animation-duration: 4s;
+    animation-name: pulse-green;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    box-shadow: 6px 6px 70px green;
+} */
 
-  #yellow {
-      color: yellow
-  }
+.losegame {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0%;
+    line-height: 100px;
+    text-align: center;
+    width: 40%;
+    height: 40%;
+    overflow: none;
+    background-color: black;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    top: 259px;
+    left: 253px;
+    right: 99px;
+    bottom: 111px;
+    border-radius: 70px;
+    padding: 20px;
+    transition-property: all;
+    transition-duration: 3s;
+    transition-timing-function: ease-in;
+
+    /* top: 202px;
+    left: 386px;
+    right: 99px;
+    bottom: 111px;
+      bottom: 111px;
+    border-radius: 40px; */
+
+}
+
+
+#losegame-display {
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 95%;
+    width: 60%;
+    height: 70%;
+    margin-top: -120px;
+    line-height: 55px;
+    transition-property: all;
+    transition-duration: 3s;
+    transition-timing-function: ease-in;
+
+    animation-duration: 8s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
 
   #grey {
       color: grey
   }
+
+  #yellow {
+    color: yellow
+}
+
+  #green {
+    color: green
+}
