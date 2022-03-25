@@ -150,6 +150,11 @@ height: 50px;
 
 }
 
+/* #top-level-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+} */
 
 .letters {
     display:flex;
