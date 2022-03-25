@@ -315,6 +315,9 @@ if (storageAvailable('localStorage')) {
 
 
 
+//Can make a player object for an individual to store their name
+// store winning wordles etc - show them later
+
 
 const player = new Object();
 // player.name = 'Mac';
@@ -604,7 +607,6 @@ function todaysWordle() {
 let todaysWordleArr = todaysWordle()
 
 
-
 const instructionsButton = document.getElementById('instructions-button')
 const instructionsDiv = document.getElementById('instructions-div')
 
@@ -613,8 +615,6 @@ instructionsButton.addEventListener('click', showInstructions)
 function showInstructions() {
     instructionsDiv.classList.toggle('full-opacity')
 }
-
-
 
 
 document.body.addEventListener('keyup', checkForSubmit)
@@ -633,29 +633,19 @@ submitButton.addEventListener('click', checkForSubmitButton)
 
 function checkForSubmitButton() {
         checkValidWords(inputObj[arrName])    
-
-        
     }
-
 
 function checkValidWords(submittedArray) {
-    
     const joinedGuessArray = submittedArray.join('')
-
-
     if (validWords.includes(joinedGuessArray.toUpperCase())) {
-
+        
     } else {
         alert('Thats not a recognised word - try again')
-
         return
     }
-
   
     submitGuess()
-
 }
-
 
 
 function submitGuess() {
@@ -668,9 +658,6 @@ function submitGuess() {
         alert('Not enough letters - 5 letters needed')
         return 
     }
-
-
-
 
     //3RD DUPE FIX FROM HERE:
     //HAD TO DO MORE STUFF TO GET IT RUNNING - writing everything out really helped
@@ -763,27 +750,25 @@ function submitGuess() {
 
 
     //reset dupe counter after submission
-     wordleDupeCounter = 0;
-
-
+    //  wordleDupeCounter = 0;
 
   
     //CHECK WIN STATUS
-
     let currentLetterRowCorrect = document.querySelectorAll(`#row${rowCounter} .green`)
     if (currentLetterRowCorrect.length === todaysWordleArr.length) {
-        console.log('THATS A WIN BABYYYYY')
-        console.log(currentLetterRowCorrect)
+        // console.log('THATS A WIN BABYYYYY')
+        // console.log(currentLetterRowCorrect)
         let allCorrectRow = document.querySelectorAll(`#row${rowCounter} .oneletter`)
         for (let oneCorrectLetter of allCorrectRow) {
             oneCorrectLetter.classList.add('test');
         }
-        console.log(allCorrectRow)
+        // console.log(allCorrectRow)
 
         //set stop game
         rowCounter = 8
     }
 
+    //run endGame function when game won (skip other parts of this fn)
     if (rowCounter == 8) {
         endGame()
         return
@@ -798,19 +783,15 @@ function submitGuess() {
     if (rowCounter == 7) {
         alert('Sorry, you lost this one! Refresh to play again')
     }
-
-
-    console.log('row count' + rowCounter)
+    // console.log('row count' + rowCounter)
     // input.value = ''
     let arrName = `newArr${rowCounter}`;
     inputObj[arrName] = [];
 
-
 }
 
+//Just a general console log for the current Wordle
 console.log(todaysWordleArr)
-
-
 
 
 function endGame() {
@@ -821,8 +802,10 @@ function endGame() {
     console.log(`log local storage just before updating ++`)
     console.log(localStorage.getItem('winCounter'))
 
+    //Add 1 to the localstorage variable
     savedScore++
 
+    //Save this back to the localStorage
     localStorage.setItem('winCounter', savedScore)
 
     console.log(`log savedScore just after updating ++`)
@@ -831,14 +814,35 @@ function endGame() {
     console.log(`log local storage just after updating ++`)
     console.log(localStorage.getItem('winCounter'))
 
-    // storage.setItem(winCounter += 1);
+    showWinStreak.innerText = `Your lifetime score = ${savedScore}`
+
+
 
     document.body.removeEventListener('keyup', checkInput);
     document.body.removeEventListener('keyup', checkForSubmit);
     document.body.removeEventListener('keyup', checkForSubmit);
     console.log('youve entered the end game');
     const finalScreen = document.getElementById('endgame');
-    finalScreen.style.display = 'block';
+    // finalScreen.style.display = 'block';
+    finalScreen.classList.add('endgame-display')
+
+    let todaysWordleStr = capitaliseThis(todaysWordleArr.join(''))
+
+    const endgameContent = document.getElementById('endgame-content');
+
+    // let newH = document.createElement('h3');
+    // newH.textContent = `Your winning word was ${todaysWordleStr}`
+    // endgameContent.appendChild(newH)
+
+    const showWinningWord = document.getElementById('winning-word')
+    showWinningWord.classList.add('winning-word')
+    showWinningWord.textContent = `${todaysWordleStr}`
+
+  
+    let newH2 = document.createElement('h4');
+    newH2.textContent = `Your current win score is ${savedScore}`
+
+    endgameContent.appendChild(newH2)
 
     const newGameButton = document.getElementById('newgame');
     newGameButton.addEventListener('click', function () {
