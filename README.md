@@ -34,9 +34,12 @@ It took quite a few hours and too many lines of code to figure it out, but once 
 
 ## Things I'd like to do in future:
 
+- Mobile mode
 - Better responses for unrecognised words (currently an alert)
+- Type your own Wordle in and share with friends to guess
 - Dark/light mode
 - Sharing results
+- Duo & quad Wordle - guess 2 or 4 words at once
 - Make a localStorage object to do things like:
   - Track lowest guess counter, player name from input, number of guess history, past Wordles guessed etc
 
