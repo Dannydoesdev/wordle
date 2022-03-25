@@ -822,9 +822,12 @@ function endGame() {
     document.body.removeEventListener('keyup', checkForSubmit);
     document.body.removeEventListener('keyup', checkForSubmit);
     console.log('youve entered the end game');
-    const finalScreen = document.getElementById('endgame');
+    // const finalScreen = document.getElementById('endgame');
+    const finalScreen = document.querySelector('.endgame');
+    console.log(`finalScren:`)
+    console.log(finalScreen)
     // finalScreen.style.display = 'block';
-    finalScreen.classList.add('endgame-display')
+    finalScreen.id = 'endgame-display'
 
     let todaysWordleStr = capitaliseThis(todaysWordleArr.join(''))
 

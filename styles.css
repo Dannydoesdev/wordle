@@ -182,24 +182,34 @@ height: 50px;
     font-size: 20pt;
     line-height: 40px;
     transition-property: background-color, transform;
-    transition-duration: 0.5s, 1.5s;
-    transition-timing-function: ease-in;
-
-    animation-duration: 8s;
+    transition-duration: 0.5s, 4s;
+    transition-timing-function: ease-in, ease-in-out;
+/* 
+    animation-duration: 8s; */
+    /* animation-duration: 4s; */
+   
+    animation-duration: 6s;
     animation-name: pulse;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    box-shadow: 16px 16px 10px white;
+    /* box-shadow: 16px 16px 10px white; */
 }
 
 @keyframes pulse {
     from {
-        box-shadow: 80px 80px 80px white;
-    }
+        /* box-shadow: 80px 80px 80px white; */
+        /* box-shadow: 20px 20px 10px white; */
+        /* box-shadow: -16px -16px 10px white; */
+        /* box-shadow: -8px -8px 8px white; */
 
+        box-shadow: -8px 8px 8px white;
+    }
   
     to {
-        box-shadow: 7px 7px 10px white;
+        /* box-shadow: 7px 7px 10px white; */ 
+        /* box-shadow: 10px 10px 10px white; */
+        
+        box-shadow: 8px 8px 14px #ffffff82;
     }
   }
 
@@ -321,12 +331,12 @@ height: 50px;
 
 
 .test {
-    font-size: 30pt;
-    padding: 30px;
+    font-size: 24pt;
+    padding: 10px;
     transform: rotate(360deg) skew(8deg);
 }
 
-#endgame {
+.endgame {
     
     /* line-height: 180px;
     text-align: center;
@@ -344,11 +354,22 @@ height: 50px;
     right: 99px;
     bottom: 111px; */
 
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+
+    /* display: block; */
+ 
+  
+    /* display: none; */
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* display: none; */
-    /* display: block; */
+
+    opacity: 0%;
+
+ /* opacity: 90%; */
 
     line-height: 90px;
     text-align: center;
@@ -360,18 +381,28 @@ height: 50px;
     position: absolute;
     z-index: 1;
     top: 125px;
-    opacity: 90%;
+   
+  
     left: 77px;
     right: 99px;
     bottom: 111px;
 
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in;
 
 }
 
-.endgame-display {
+#endgame-display {
+    visibility: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 90%;
+    transition-property: all;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in;
+
 }
 
 .winning-word {
