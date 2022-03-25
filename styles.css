@@ -48,7 +48,6 @@ box-sizing: border-box;
   /* border: 1px inset white; */
   background-color: black;
   color: white;
-  /* display: flex; */
 
 
   transition-property: background-color, transform, opacity;
