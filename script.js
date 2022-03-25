@@ -279,39 +279,39 @@
 
 //STORAGE TESTING
 
-function storageAvailable(type) {
-    var storage;
-    try {
-        storage = window[type];
-        var x = '__storage_test__';
-        storage.setItem(x, x);
-        storage.removeItem(x);
-        return true;
-    }
-    catch(e) {
-        return e instanceof DOMException && (
-            // everything except Firefox
-            e.code === 22 ||
-            // Firefox
-            e.code === 1014 ||
-            // test name field too, because code might not be present
-            // everything except Firefox
-            e.name === 'QuotaExceededError' ||
-            // Firefox
-            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-            // acknowledge QuotaExceededError only if there's something already stored
-            (storage && storage.length !== 0);
-    }
-}
+// function storageAvailable(type) {
+//     var storage;
+//     try {
+//         storage = window[type];
+//         var x = '__storage_test__';
+//         storage.setItem(x, x);
+//         storage.removeItem(x);
+//         return true;
+//     }
+//     catch(e) {
+//         return e instanceof DOMException && (
+//             // everything except Firefox
+//             e.code === 22 ||
+//             // Firefox
+//             e.code === 1014 ||
+//             // test name field too, because code might not be present
+//             // everything except Firefox
+//             e.name === 'QuotaExceededError' ||
+//             // Firefox
+//             e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+//             // acknowledge QuotaExceededError only if there's something already stored
+//             (storage && storage.length !== 0);
+//     }
+// }
 
-if (storageAvailable('localStorage')) {
-    // Yippee! We can use localStorage awesomeness
-    console.log('Yippee! We can use localStorage awesomeness')
-  }
-  else {
-    // Too bad, no localStorage for us
-    console.log('Too bad, no localStorage for us')
-  }
+// if (storageAvailable('localStorage')) {
+//     // Yippee! We can use localStorage awesomeness
+//     console.log('Yippee! We can use localStorage awesomeness')
+//   }
+//   else {
+//     // Too bad, no localStorage for us
+//     console.log('Too bad, no localStorage for us')
+//   }
 
 
 
@@ -387,6 +387,9 @@ let inputArr = [];
 
 const inputObj = new Object();
 
+//gets updated with the guesscount on win
+let guessTracker
+
 // const input = document.getElementById('input')
 
 //Global duplicate counter to help fns accomodate
@@ -397,8 +400,63 @@ let arrName = `newArr${rowCounter}`;
     
 inputObj[arrName] = [];
 
+const timedButton = document.getElementById('timed-button')
+// const instructionsDiv = document.getElementById('instructions-div')
 
+timedButton.addEventListener('click', timedMode)
 
+// function showInstructions() {
+//     instructionsDiv.classList.toggle('full-opacity')
+// }
+
+const topLevelInfo = document.getElementById('top-level-info')
+
+//Creating countDown var outside of fn
+let countDown
+let countDownTimer
+
+function timedMode() {
+    
+    // let displayCount = document.createElement('h4')
+
+    let count = 90000
+    countDownTimer = setInterval(function () {
+        count = count - 1000
+        console.log(count)
+        console.log(`${count / 1000} seconds left`)
+        timedButton.textContent = `${count / 1000} seconds left`;
+        if (count / 1000 >= 60) {
+            timedButton.style.color = 'green'
+        } else if (count / 1000 <= 59 && count / 1000 >= 30) {
+            timedButton.style.color = 'yellow'
+        } else if (count / 1000 <= 29 && count / 1000 >= 0) {
+            timedButton.style.color = 'red'
+        }
+}, 1000)
+    countDown = setTimeout(lostTimed, 90000)
+        // 3000)
+        // 90000)
+
+    if (rowCounter == 8) {
+        clearInterval(countDownTimer)
+        clearTimeout(countDown)
+        endGame()
+    }
+
+    // console.log(countDown)
+    // return countDown
+}
+
+// function wonTimed() {
+//     const countDown = timedMode()
+//     console.log(countDown)
+//     clearTimeout(countDown)
+// }
+
+function lostTimed() {
+    alert('Sorry, you lost this one! Refresh to play again')
+    return
+}
 
 
 //put event listener on body
@@ -432,8 +490,6 @@ function generateUnusedLetters(array) {
 }
 
 generateUnusedLetters(alphabet);
-
-
 
 
 function inputClickedUnusedLetter(letter) {
@@ -738,19 +794,12 @@ function submitGuess() {
     }
 
 
-
-
     //hide letters type from unused letter section
     hideUnusedLetters()
 
 
     //Show used letters in the 'used letter section
     showUsedLetters()
-
-
-
-    //reset dupe counter after submission
-    //  wordleDupeCounter = 0;
 
   
     //CHECK WIN STATUS
@@ -764,12 +813,16 @@ function submitGuess() {
         }
         // console.log(allCorrectRow)
 
+        guessTracker = rowCounter;
+        console.log(`guessTracker before endgame = ${guessTracker}`)
         //set stop game
         rowCounter = 8
     }
 
     //run endGame function when game won (skip other parts of this fn)
     if (rowCounter == 8) {
+        clearTimeout(countDown)
+        clearInterval(countDownTimer)
         endGame()
         return
     }
@@ -795,6 +848,8 @@ console.log(todaysWordleArr)
 
 
 function endGame() {
+
+    console.log(`guessTracker in endgame = ${guessTracker}`)
 
     console.log(`log savedScore just before updating ++`)
     console.log(savedScore)
@@ -833,15 +888,17 @@ function endGame() {
 
     const endgameContent = document.getElementById('endgame-content');
 
-    // let newH = document.createElement('h3');
-    // newH.textContent = `Your winning word was ${todaysWordleStr}`
-    // endgameContent.appendChild(newH)
+    let newH = document.createElement('h4');
+    newH.textContent = `You won in ${guessTracker} guesses, nice work!`
+    endgameContent.appendChild(newH)
 
     const showWinningWord = document.getElementById('winning-word')
     showWinningWord.classList.add('winning-word')
     showWinningWord.textContent = `${todaysWordleStr}`
 
-  
+    const header = document.querySelector('header')
+    header.style.opacity = '60%';
+
     let newH2 = document.createElement('h4');
     newH2.textContent = `Your current win score is ${savedScore}`
 
@@ -855,8 +912,6 @@ function endGame() {
 
     
 }
-
-
 
 
 //Append the word to test
