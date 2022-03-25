@@ -41,7 +41,7 @@ It took quite a few hours and too many lines of code to figure it out, but once 
 - Track lowest guess counter, player name from input, number of guess history, past Wordles guessed etc
 
 
-## Worlde Rules:
+## Wordle Rules:
 
 Wordle is a fairly simple and fun game
 
