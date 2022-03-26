@@ -334,6 +334,71 @@ function updateDivs(letter) {
 
 ```
 
+### Create left and right 'alphabet keyboards'
+#### I used an existing alphabet array function, then appended them to the existing divs on the left
+#### Then to allow these to take place of the 'keyboard' I added an event listener to run the checkinput fns
+#### This is very similar to the 'used letters' functions - but they will 'show' instead of 'hide' on submit
+
+```javascript
+
+//create 'floating' letters that are used/unused
+const unusedLettersDiv = document.getElementById('unused-letters')
+const usedLettersDiv = document.getElementById('used-letters')
+
+
+//NOTE: Cool alphabet array creator taken from https://javascript.plainenglish.io/create-an-array-of-alphabet-characters-in-javascript-with-this-simple-trick-930033079dd3
+
+
+const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+const alphabet = alpha.map((x) => String.fromCharCode(x));
+
+
+//using above function - generate the letter lists
+function generateUnusedLetters(array) {    
+    
+    for (let letter of array) {
+        let newLetterDiv = document.createElement('div')
+        newLetterDiv.id = `unused${letter}`
+        newLetterDiv.classList.add('unused-letter-class')
+        newLetterDiv.innerText = letter;
+        newLetterDiv.addEventListener('click', function () {
+            inputClickedUnusedLetter(letter);
+        })
+        unusedLettersDiv.appendChild(newLetterDiv);
+   }
+}
+
+generateUnusedLetters(alphabet);
+
+//Set up ability to use them as a 'clickable keyboard'
+function inputClickedUnusedLetter(letter) {
+   
+    arrName = `newArr${rowCounter}`;
+    if (inputObj[arrName].length <= 4) { 
+        inputObj[arrName].push(letter);
+        } else if (inputObj[arrName].length == 5) {
+            console.log('too many letters')
+    }
+    
+    updateDivs(inputObj[arrName])
+}
+
+//On submission - remove letters from left side
+function hideUnusedLetters() {
+    let allUnusedLetterDivs = document.querySelectorAll('.unused-letter-class')
+    let allTypedLetters = document.querySelectorAll('.green, .grey, .yellow')
+   
+    for (let oneUnusedLetterDiv of allUnusedLetterDivs) {
+        for (let oneTypedLetter of allTypedLetters) {
+            if (oneTypedLetter.innerText == oneUnusedLetterDiv.innerText) {
+                oneUnusedLetterDiv.classList.add('no-opacity')
+            }
+        }
+    }
+
+}
+
+```
 
 ### Known bugs
 
