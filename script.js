@@ -153,7 +153,7 @@ let countDown
 let countDownTimer
 
 function timedMode() {
-    //Remove other speed modes to stop problems
+    //Remove other speed modes to stop potential problems
     speedButton.removeEventListener('click', speedMode)
     timedButton.removeEventListener('click', timedMode)
 
