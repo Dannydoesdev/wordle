@@ -243,13 +243,14 @@ function lostTimed() {
 
 ```
 
-### Input and display logic
+### Input, display & submission logic
+#### I wanted to be flexible and allow the user to guess/submit with either the keyboard or on screen buttons
+#### The below is for the keyboard inputs
 
 ```javascript
 
 //put event listener on body for inputs
 document.body.addEventListener('keyup', checkInput)
-
 
 
 //I decided to use an input 'object' instead of 1 array, lets me do more things with it in future
@@ -300,6 +301,35 @@ function updateDivs(letter) {
         currentLoop++
     }
 
+}
+
+
+//Allow submission via the 'enter' key
+
+//Set event listener specifically for 'enter' key to run submission code
+document.body.addEventListener('keyup', checkForSubmit)
+
+//Before submission code - run through valid words array to check it's a real word
+function checkForSubmit(e) {
+if (e.code.includes('Enter')) {
+    checkValidWords(inputObj[arrName])    
+
+    }
+}
+
+//fn to check that the submitted word is in the validWords array
+//first to turn the input array into a string - then to run both against eachother
+function checkValidWords(submittedArray) {
+    const joinedGuessArray = submittedArray.join('')
+    if (validWords.includes(joinedGuessArray.toUpperCase())) {
+        
+    } else {
+        alert('Thats not a recognised word - try again')
+        return
+    }
+  
+    //After confirming valid word in input - submit fn is run
+    submitGuess()
 }
 
 ```
